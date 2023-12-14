@@ -5,6 +5,14 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
+    // public enum MovementType
+    // {
+    //     RigidBodyVelocity,
+    //     RigitBodyAddForce,
+    //     VectorMoveToward,
+    //     TransformTranslate,
+    //     DirectPositionChange
+    // }
     public float moveSpeed;
     float speedX, speedY;
     Rigidbody2D rb;
