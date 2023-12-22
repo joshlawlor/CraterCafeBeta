@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private Vector2 moveDirection;
+    private Vector2 lastMoveDirection; // Store the last non-zero movement direction
 
     void Update()
     {
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInputs()
     {
+        // Handle keyboard input
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -36,11 +38,24 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.y);
         animator.SetFloat("Speed", moveDirection.magnitude);
+
+        // Update the last non-zero movement direction
+        if (moveDirection != Vector2.zero)
+        {
+            lastMoveDirection = moveDirection;
+        }
     }
 
     void Move()
     {
         // Move based on keyboard input
         rb.velocity = moveDirection * moveSpeed;
+
+        // Set the walk animation direction based on the last non-zero movement direction
+        if (lastMoveDirection != Vector2.zero)
+        {
+            animator.SetFloat("LastMoveDirectionX", lastMoveDirection.x);
+            animator.SetFloat("LastMoveDirectionY", lastMoveDirection.y);
+        }
     }
 }
