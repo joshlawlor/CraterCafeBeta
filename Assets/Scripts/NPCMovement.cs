@@ -42,27 +42,26 @@ public class NPCMovement : MonoBehaviour
         // If enemy reached last waypoint then it stops
         if (waypointIndex <= waypoints.Length - 1)
         {
-
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].position, moveSpeed * Time.deltaTime);
-
             Vector3 targetPosition = waypoints[waypointIndex].position;
 
-            // Calculate move direction based on the difference between current position and target position
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-
-            // Update Animator parameters
             animator.SetFloat("Horizontal", moveDirection.x);
             animator.SetFloat("Vertical", moveDirection.y);
             animator.SetFloat("Speed", moveDirection.magnitude);
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if (transform.position == waypoints[waypointIndex].transform.position)
+
+            if (transform.position == targetPosition)
             {
-                waypointIndex += 1;
+                waypointIndex++;
+
+                // Check if the NPC has reached the final waypoint
+                if (waypointIndex == waypoints.Length)
+                {
+                    // Trigger the animator to set Emote to true
+                    animator.SetBool("Emote", true);
+                }
             }
         }
     }
