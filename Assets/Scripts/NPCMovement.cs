@@ -11,6 +11,7 @@ public class NPCMovement : MonoBehaviour
     // Walk speed that can be set in Inspector
     [SerializeField]
     private float moveSpeed = 2f;
+    public Animator animator;
 
     // Index of current waypoint from which Enemy walks
     // to the next one
@@ -25,7 +26,7 @@ public class NPCMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
 
         // Move Enemy
@@ -46,6 +47,16 @@ public class NPCMovement : MonoBehaviour
             // using MoveTowards method
             transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].position, moveSpeed * Time.deltaTime);
 
+            Vector3 targetPosition = waypoints[waypointIndex].position;
+
+            // Calculate move direction based on the difference between current position and target position
+            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+
+            // Update Animator parameters
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.y);
+            animator.SetFloat("Speed", moveDirection.magnitude);
             // If Enemy reaches position of waypoint he walked towards
             // then waypointIndex is increased by 1
             // and Enemy starts to walk to the next waypoint

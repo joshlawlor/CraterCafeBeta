@@ -2360,7 +2360,7 @@ Transform:
   m_GameObject: {fileID: 842191306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.79, z: 0.016799469}
+  m_LocalPosition: {x: 0, y: -0.98, z: 0.016799469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3999,7 +3999,6 @@ GameObject:
   - component: {fileID: 1178249294}
   - component: {fileID: 1178249297}
   - component: {fileID: 1178249298}
-  - component: {fileID: 1178249299}
   m_Layer: 7
   m_Name: NPC
   m_TagString: Untagged
@@ -4030,7 +4029,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178249292}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f852c015a863a8f409b756f6992eeb03, type: 2}
   m_CullingMode: 0
@@ -4050,7 +4049,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178249292}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 7c545956cfc303140baa16b96b1cada2, type: 2}
   m_Animations: []
@@ -4099,7 +4098,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 230150839, guid: 17329101504c6b44ab81d82f308e1580, type: 3}
+  m_Sprite: {fileID: -1393405912, guid: 17329101504c6b44ab81d82f308e1580, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4146,7 +4145,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 1.375}
+    oldSize: {x: 0.9375, y: 1.4375}
     newSize: {x: 0.9375, y: 1.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4180,33 +4179,7 @@ MonoBehaviour:
   - {fileID: 1698165779}
   - {fileID: 842191307}
   moveSpeed: 2
---- !u!50 &1178249299
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178249292}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  animator: {fileID: 1178249294}
 --- !u!1 &1216534432
 GameObject:
   m_ObjectHideFlags: 0
