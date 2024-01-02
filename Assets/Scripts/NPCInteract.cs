@@ -8,6 +8,8 @@ public class NPCInteract : MonoBehaviour
     public Text dialogueText;
 
     public GameObject continueButton;
+    public GameObject popUp; // Reference to the PopUp GameObject
+
     public string[] dialogue;
 
     private int index;
@@ -28,11 +30,12 @@ public class NPCInteract : MonoBehaviour
             else
             {
                 dialoguePanel.SetActive(true);
+                SetPopUpActive(false); 
                 StartCoroutine(Typing());
             }
         }
 
-        if(dialogueText.text == dialogue[index])
+        if (dialogueText.text == dialogue[index])
         {
             continueButton.SetActive(true);
         }
@@ -75,6 +78,7 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
+            SetPopUpActive(true); //
         }
     }
 
@@ -83,9 +87,17 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
+            SetPopUpActive(false); 
             eraseText();
         }
     }
 
+   private void SetPopUpActive(bool isActive)
+    {
+        if (popUp != null)
+        {
+            popUp.SetActive(isActive);
+        }
+    }
 
 }
