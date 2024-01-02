@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FoodItemController : MonoBehaviour
 {
+    public GameObject popUp; // Reference to the PopUp GameObject
 
     private bool playerInRange = false;
 
@@ -21,6 +22,8 @@ public class FoodItemController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInRange = true;
+            // Set the PopUp GameObject to active
+            SetPopUpActive(true);
         }
     }
 
@@ -29,6 +32,16 @@ public class FoodItemController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInRange = false;
+            // Set the PopUp GameObject to inactive
+            SetPopUpActive(false);
+        }
+    }
+
+    private void SetPopUpActive(bool isActive)
+    {
+        if (popUp != null)
+        {
+            popUp.SetActive(isActive);
         }
     }
 }
