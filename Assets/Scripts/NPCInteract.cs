@@ -24,7 +24,7 @@ public class NPCInteract : MonoBehaviour
 
             if (dialoguePanel.activeInHierarchy)
             {
-
+                SetPopUpActive(true);
                 eraseText();
             }
             else
