@@ -30,7 +30,7 @@ public class NPCInteract : MonoBehaviour
             else
             {
                 dialoguePanel.SetActive(true);
-                SetPopUpActive(false); 
+                SetPopUpActive(false);
                 StartCoroutine(Typing());
             }
         }
@@ -43,10 +43,13 @@ public class NPCInteract : MonoBehaviour
 
     public void eraseText()
     {
+        if (dialoguePanel)
+        {
+            dialogueText.text = "";
+            dialoguePanel.SetActive(false);
+            index = 0;
+        }
 
-        dialogueText.text = "";
-        dialoguePanel.SetActive(false);
-        index = 0;
     }
 
     IEnumerator Typing()
@@ -87,12 +90,12 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            SetPopUpActive(false); 
+            SetPopUpActive(false);
             eraseText();
         }
     }
 
-   private void SetPopUpActive(bool isActive)
+    private void SetPopUpActive(bool isActive)
     {
         if (popUp != null)
         {
