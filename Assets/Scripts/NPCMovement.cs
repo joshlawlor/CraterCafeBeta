@@ -31,7 +31,6 @@ public class NPCMovement : MonoBehaviour
 
         // Move Enemy
         Move();
-        Debug.Log("Waypoint Index: " + waypointIndex + ", Position: " + transform.position);
 
     }
 

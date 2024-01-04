@@ -8,11 +8,19 @@ public class SceneItemController : MonoBehaviour
 
     private bool playerInRange = false;
 
+    public ItemData itemData;
+
 
     private void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
+            Inventory inventory = FindObjectOfType<Inventory>();
+
+            if (inventory != null && itemData != null)
+            {
+                Inventory.Instance.Add(itemData);
+            }
             Destroy(gameObject);
         }
     }
