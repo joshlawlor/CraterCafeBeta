@@ -2,27 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodItemController : MonoBehaviour
+public class SceneItemController : MonoBehaviour
 {
-    public GameObject popUp; // Reference to the PopUp GameObject
+    public GameObject popUp; 
 
     private bool playerInRange = false;
 
+
     private void Update()
     {
-        // Check if the player is in range and presses the "F" key
         if (playerInRange && Input.GetKeyDown(KeyCode.F))
         {
             Destroy(gameObject);
         }
     }
 
+
+
+
+    // POP UP CODE: //
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             playerInRange = true;
-            // Set the PopUp GameObject to active
             SetPopUpActive(true);
         }
     }
@@ -32,7 +36,6 @@ public class FoodItemController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInRange = false;
-            // Set the PopUp GameObject to inactive
             SetPopUpActive(false);
         }
     }
