@@ -20,8 +20,9 @@ public class SceneItemController : MonoBehaviour
             if (inventory != null && itemData != null)
             {
                 Inventory.Instance.Add(itemData);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            
         }
     }
 

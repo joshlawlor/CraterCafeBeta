@@ -7,7 +7,15 @@ public class InventoryManagement : MonoBehaviour
     public GameObject slotPrefab;
     public List<InventorySlot> inventorySlots = new List<InventorySlot>(11);
 
+    private void OnEnable()
+    {
+        Inventory.Instance.OnInventoryChange += FillInventory;
+    }
 
+    private void OnDisable()
+    {
+        Inventory.Instance.OnInventoryChange -= FillInventory;
+    }
 
     void ResetInventory()
     {
@@ -15,7 +23,7 @@ public class InventoryManagement : MonoBehaviour
         {
             Destroy(childTransform.gameObject);
         }
-        inventorySlots = new List<InventorySlot>(12);
+        inventorySlots = new List<InventorySlot>(11);
     }
 
     void FillInventory(List<InventoryItem> inventory)
@@ -29,7 +37,7 @@ public class InventoryManagement : MonoBehaviour
 
         }
 
-        for(int i = 0; i<inventory.Count; i++)
+        for (int i = 0; i < inventory.Count; i++)
         {
             inventorySlots[i].FillSlot(inventory[i]);
         }
@@ -38,12 +46,21 @@ public class InventoryManagement : MonoBehaviour
 
     void CreateInventorySlot()
     {
-        GameObject newSlot = Instantiate(slotPrefab);
-        newSlot.transform.SetParent(transform, false);
+        // Check if the inventorySlotPrefab is not null before instantiating
+        if (slotPrefab != null)
+        {
+            GameObject newSlot = Instantiate(slotPrefab);
+            newSlot.transform.SetParent(transform, false);
 
-        InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
-        newSlotComponent.ClearSlot();
+            InventorySlot newSlotComponent = newSlot.GetComponent<InventorySlot>();
+            newSlotComponent.ClearSlot();
 
-        inventorySlots.Add(newSlotComponent);
+            inventorySlots.Add(newSlotComponent);
+        }
+        else
+        {
+            Debug.LogError("Inventory slot prefab is null. Please assign a prefab in the inspector.");
+        }
+
     }
 }
