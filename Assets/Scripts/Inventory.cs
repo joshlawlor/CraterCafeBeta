@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public event Action<List<InventoryItem>> OnInventoryChange;
+
     private void Awake()
     {
         // Ensure there's only one instance
@@ -59,6 +62,7 @@ public class Inventory : MonoBehaviour
         {
             item.AddToStack();
             Debug.Log($"Added {itemData.itemName} to the inventory. Stack size: {item.stackSize}");
+            OnInventoryChange?.Invoke(inventory);
         }
         else
         {
@@ -66,6 +70,7 @@ public class Inventory : MonoBehaviour
             inventory.Add(newItem);
             itemDictionary.Add(itemData, newItem);
             Debug.Log($"Added {itemData.itemName} to the inventory for the first time!");
+            OnInventoryChange?.Invoke(inventory);
         }
 
     }
@@ -80,6 +85,7 @@ public class Inventory : MonoBehaviour
             {
                 inventory.Remove(item);
                 itemDictionary.Remove(itemData);
+                OnInventoryChange?.Invoke(inventory);
             }
         }
     }
