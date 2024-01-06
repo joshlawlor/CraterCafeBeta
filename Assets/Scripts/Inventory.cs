@@ -12,16 +12,14 @@ public class Inventory : MonoBehaviour
     private Dictionary<ItemData, InventoryItem> itemDictionary = new Dictionary<ItemData, InventoryItem>();
 
     // Public property to get the singleton instance
-    public static Inventory Instance
+   public static Inventory Instance
     {
         get
         {
-            if (instance == null)
+            if (instance == null && Application.isPlaying)
             {
-                // Try to find an existing instance in the scene
                 instance = FindObjectOfType<Inventory>();
 
-                // If no instance is found, create a new GameObject with the Inventory script
                 if (instance == null)
                 {
                     GameObject singletonObject = new GameObject("InventoryManager");
