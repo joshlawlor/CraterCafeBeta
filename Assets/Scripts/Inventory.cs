@@ -11,8 +11,9 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> inventory = new List<InventoryItem>();
     private Dictionary<ItemData, InventoryItem> itemDictionary = new Dictionary<ItemData, InventoryItem>();
 
+
     // Public property to get the singleton instance
-   public static Inventory Instance
+    public static Inventory Instance
     {
         get
         {
@@ -87,6 +88,24 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
+    private int selectedIndex = -1;
+
+    public int SelectedIndex
+    {
+        get { return selectedIndex; }
+        set
+        {
+            if (value >= 0 && value < inventory.Count)
+            {
+                selectedIndex = value;
+                OnInventoryChange?.Invoke(inventory);
+            }
+        }
+    }
+
+
 }
 
 
