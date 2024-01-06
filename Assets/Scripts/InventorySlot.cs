@@ -18,18 +18,37 @@ public class InventorySlot : MonoBehaviour
         stackSizeText.enabled = false;
     }
 
-     public void SelectSlot(bool isSelected)
+    public void SelectSlot(bool isSelected)
     {
         // Change the slot appearance based on selection
         // For example, you can change the background color or use SlotHighlight
         // Here, I'm changing the background color of the parent GameObject
-        Color backgroundColor = isSelected ? Color.green : Color.black;
+
+        // Hexadecimal values for green and black
+        string hexBlue = "#69BCD4";
+        string hexBlack = "#4B4848";
+
+        Color backgroundColor = isSelected ? HexToColor(hexBlue) : HexToColor(hexBlack);
         GetComponent<Image>().color = backgroundColor;
     }
 
+    // Function to convert hexadecimal string to Color
+    Color HexToColor(string hex)
+    {
+        Color color;
+        if (ColorUtility.TryParseHtmlString(hex, out color))
+        {
+            return color;
+        }
+        else
+        {
+            // Handle parsing error
+            return Color.white; // Default color if parsing fails
+        }
+    }
     public void FillSlot(InventoryItem item)
     {
-        if(item == null)
+        if (item == null)
         {
             ClearSlot();
             return;
