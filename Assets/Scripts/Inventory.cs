@@ -11,17 +11,16 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> inventory = new List<InventoryItem>();
     private Dictionary<ItemData, InventoryItem> itemDictionary = new Dictionary<ItemData, InventoryItem>();
 
+
     // Public property to get the singleton instance
     public static Inventory Instance
     {
         get
         {
-            if (instance == null)
+            if (instance == null && Application.isPlaying)
             {
-                // Try to find an existing instance in the scene
                 instance = FindObjectOfType<Inventory>();
 
-                // If no instance is found, create a new GameObject with the Inventory script
                 if (instance == null)
                 {
                     GameObject singletonObject = new GameObject("InventoryManager");
@@ -89,6 +88,24 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
+    private int selectedIndex = -1;
+
+    public int SelectedIndex
+    {
+        get { return selectedIndex; }
+        set
+        {
+            if (value >= 0 && value < inventory.Count)
+            {
+                selectedIndex = value;
+                OnInventoryChange?.Invoke(inventory);
+            }
+        }
+    }
+
+
 }
 
 

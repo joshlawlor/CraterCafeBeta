@@ -18,6 +18,15 @@ public class InventorySlot : MonoBehaviour
         stackSizeText.enabled = false;
     }
 
+     public void SelectSlot(bool isSelected)
+    {
+        // Change the slot appearance based on selection
+        // For example, you can change the background color or use SlotHighlight
+        // Here, I'm changing the background color of the parent GameObject
+        Color backgroundColor = isSelected ? Color.green : Color.black;
+        GetComponent<Image>().color = backgroundColor;
+    }
+
     public void FillSlot(InventoryItem item)
     {
         if(item == null)

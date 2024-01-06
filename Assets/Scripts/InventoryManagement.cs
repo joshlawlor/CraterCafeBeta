@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class InventoryManagement : MonoBehaviour
 {
     public GameObject slotPrefab;
@@ -15,6 +17,22 @@ public class InventoryManagement : MonoBehaviour
     private void OnDisable()
     {
         Inventory.Instance.OnInventoryChange -= FillInventory;
+    }
+
+
+    private void Update()
+    {
+        // Handle slot selection based on player input (1-5)
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                Inventory.Instance.SelectedIndex = i;
+            }
+        }
+
+        // Update slot appearance based on selection
+        UpdateSlotSelection();
     }
 
     void ResetInventory()
@@ -62,5 +80,12 @@ public class InventoryManagement : MonoBehaviour
             Debug.LogError("Inventory slot prefab is null. Please assign a prefab in the inspector.");
         }
 
+    }
+    private void UpdateSlotSelection()
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            inventorySlots[i].SelectSlot(i == Inventory.Instance.SelectedIndex);
+        }
     }
 }
