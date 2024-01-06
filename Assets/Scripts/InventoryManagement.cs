@@ -88,4 +88,43 @@ public class InventoryManagement : MonoBehaviour
             inventorySlots[i].SelectSlot(i == Inventory.Instance.SelectedIndex);
         }
     }
+    public void HandleSlotAction(int slotIndex)
+    {
+        // Check if the player is in range of an NPC
+        bool playerInRange = CheckPlayerInRange(); // Implement this method based on my  NPC detection logic
+
+        // Get the selected slot
+        InventorySlot selectedSlot = inventorySlots[slotIndex];
+
+        // If the player is in range of an NPC, trigger the "GIVE" action
+        if (playerInRange)
+        {
+            GiveAction(selectedSlot);
+        }
+        else
+        {
+            // If the player is not in range, trigger the "DROP" action
+            DropAction(selectedSlot);
+        }
+    }
+
+    private bool CheckPlayerInRange()
+    {
+        // Implement logic to check if the player is in range of an NPC
+        // Return true if the player is in range, false otherwise
+        return true; // Update this based on your actual logic
+    }
+    private void GiveAction(InventorySlot selectedSlot)
+    {
+        // Implement logic for the "GIVE" action here
+        // For example, you can access the item from selectedSlot and interact with the NPC
+        Debug.Log("GIVE action triggered!");
+    }
+    private void DropAction(InventorySlot selectedSlot)
+    {
+        // Implement logic for the "DROP" action here
+        // For example, you can remove the item from the inventory and drop it in the game world
+        Debug.Log("DROP action triggered!");
+    }
+
 }
