@@ -8,7 +8,8 @@ public class NPCInteract : MonoBehaviour
     public Text dialogueText;
 
     public GameObject continueButton;
-    public GameObject popUp; // Reference to the PopUp GameObject
+    public GameObject talkPopUp; // Reference to the PopUp GameObject
+    public GameObject givePopUp;
 
     public string[] dialogue;
 
@@ -24,13 +25,13 @@ public class NPCInteract : MonoBehaviour
 
             if (dialoguePanel.activeInHierarchy)
             {
-                SetPopUpActive(true);
+                SetTalkPopUpActive(true);
                 eraseText();
             }
             else
             {
                 dialoguePanel.SetActive(true);
-                SetPopUpActive(false);
+                SetTalkPopUpActive(false);
                 StartCoroutine(Typing());
             }
         }
@@ -38,6 +39,51 @@ public class NPCInteract : MonoBehaviour
         if (dialogueText.text == dialogue[index])
         {
             continueButton.SetActive(true);
+        }
+
+        if (playerIsClose && Inventory.Instance.SelectedIndex != -1)
+        {
+            int selectedIndex = Inventory.Instance.SelectedIndex;
+
+            // Check if the selected index is within the valid range of the inventory list
+            if (selectedIndex >= 0 && selectedIndex < Inventory.Instance.inventory.Count)
+            {
+                InventoryItem selectedItem = Inventory.Instance.inventory[selectedIndex];
+
+                // Check if the stack size is greater than 1 before giving the item
+                if (selectedItem != null)
+                {
+                    SetTalkPopUpActive(false);
+                    SetGivePopUpActive(true);
+                }
+            }
+
+        }
+
+
+        // Check for 'G' key press to give item
+        if (Input.GetKeyDown(KeyCode.G) && playerIsClose && Inventory.Instance.SelectedIndex != -1)
+        {
+            int selectedIndex = Inventory.Instance.SelectedIndex;
+
+            // Check if the selected index is within the valid range of the inventory list
+            if (selectedIndex >= 0 && selectedIndex < Inventory.Instance.inventory.Count)
+            {
+                // Get the selected item from the inventory
+                InventoryItem selectedItem = Inventory.Instance.inventory[selectedIndex];
+
+                // Check if the stack size is greater than 0 before giving the item
+                if (selectedItem.stackSize > 0)
+                {
+                    GiveItemToNPC();
+                    SetGivePopUpActive(false);
+                }
+                else
+                {
+                    // Handle the case where stack size is not greater than 0 (optional)
+                    Debug.Log("Cannot give item with 0");
+                }
+            }
         }
     }
 
@@ -81,7 +127,7 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
-            SetPopUpActive(true); //
+            SetTalkPopUpActive(true); //
         }
     }
 
@@ -90,17 +136,36 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            SetPopUpActive(false);
+            SetTalkPopUpActive(false);
+            SetGivePopUpActive(false);
             eraseText();
         }
     }
 
-    private void SetPopUpActive(bool isActive)
+    private void SetTalkPopUpActive(bool isActive)
     {
-        if (popUp != null)
+        if (talkPopUp != null)
         {
-            popUp.SetActive(isActive);
+            talkPopUp.SetActive(isActive);
         }
     }
 
+    private void SetGivePopUpActive(bool isActive)
+    {
+        if (givePopUp != null)
+        {
+            givePopUp.SetActive(isActive);
+        }
+    }
+
+    private void GiveItemToNPC()
+    {
+        // Get the selected item from the inventory
+        InventoryItem selectedItem = Inventory.Instance.inventory[Inventory.Instance.SelectedIndex];
+
+        Inventory.Instance.Remove(selectedItem.itemData);
+
+        // Log a message (you can replace this with your actual logic)
+        Debug.Log($"Gave {selectedItem.itemData.itemName} to NPC!");
+    }
 }

@@ -2,20 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI labelText;
+    
     public TextMeshProUGUI stackSizeText;
+
+    private static InventorySlot sharedInstance;
+    private bool isSelected = false;
+
+    public static InventorySlot SharedInstance
+    {
+        get
+        {
+            if (sharedInstance == null)
+            {
+                // Find the instance in the scene
+                sharedInstance = FindObjectOfType<InventorySlot>();
+            }
+
+            return sharedInstance;
+        }
+    }
 
     public void ClearSlot()
     {
         icon.enabled = false;
         labelText.enabled = false;
         stackSizeText.enabled = false;
+        UnselectSlot();
+
     }
 
     public void SelectSlot(bool isSelected)
@@ -23,6 +42,7 @@ public class InventorySlot : MonoBehaviour
         // Change the slot appearance based on selection
         // For example, you can change the background color or use SlotHighlight
         // Here, I'm changing the background color of the parent GameObject
+        this.isSelected = isSelected;
 
         // Hexadecimal values for green and black
         string hexBlue = "#69BCD4";
@@ -61,5 +81,15 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.itemData.icon;
         labelText.text = item.itemData.itemName;
         stackSizeText.text = item.stackSize.ToString();
+    }
+    public void UnselectSlot()
+    {
+        // Toggle the selection state of the slot
+        isSelected = !isSelected;
+
+        // Change the slot appearance to default (unselected)
+        string hexBlack = "#4B4848";
+        Color backgroundColor = HexToColor(hexBlack);
+        GetComponent<Image>().color = backgroundColor;
     }
 }
