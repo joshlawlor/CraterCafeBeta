@@ -11,6 +11,8 @@ public class NPCInteract : MonoBehaviour
     public GameObject talkPopUp; // Reference to the PopUp GameObject
     public GameObject givePopUp;
 
+    public GameObject dropPopUp;
+
     public string[] dialogue;
 
     private int index;
@@ -155,6 +157,13 @@ public class NPCInteract : MonoBehaviour
         if (givePopUp != null)
         {
             givePopUp.SetActive(isActive);
+        }
+    }
+    private void SetDropPopUpActive(bool isActive)
+    {
+        if (dropPopUp != null)
+        {
+            dropPopUp.SetActive(isActive);
         }
     }
 
