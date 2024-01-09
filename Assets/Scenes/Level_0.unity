@@ -7757,6 +7757,7 @@ MonoBehaviour:
   talkPopUp: {fileID: 632268968}
   givePopUp: {fileID: 628335333}
   dropPopUp: {fileID: 283725719}
+  orderData: {fileID: 11400000, guid: aad446c325cee5b42ae9ab5925e39250, type: 2}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
