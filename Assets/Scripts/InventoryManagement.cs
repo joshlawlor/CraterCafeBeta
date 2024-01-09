@@ -7,7 +7,7 @@ using UnityEngine;
 public class InventoryManagement : MonoBehaviour
 {
     public GameObject slotPrefab;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>(11);
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>(3);
 
     private void OnEnable()
     {
@@ -41,7 +41,7 @@ public class InventoryManagement : MonoBehaviour
         {
             Destroy(childTransform.gameObject);
         }
-        inventorySlots = new List<InventorySlot>(11);
+        inventorySlots = new List<InventorySlot>(3);
     }
 
     void FillInventory(List<InventoryItem> inventory)

@@ -11,6 +11,8 @@ public class NPCInteract : MonoBehaviour
     public GameObject talkPopUp; // Reference to the PopUp GameObject
     public GameObject givePopUp;
 
+    public GameObject successPopUp;
+    public GameObject failPopUp;
     public GameObject dropPopUp;
     public NPCOrderData orderData;
 
@@ -28,13 +30,13 @@ public class NPCInteract : MonoBehaviour
 
             if (dialoguePanel.activeInHierarchy)
             {
-                SetTalkPopUpActive(true);
+                SetPopUpActive(talkPopUp, true);
                 eraseText();
             }
             else
             {
                 dialoguePanel.SetActive(true);
-                SetTalkPopUpActive(false);
+                SetPopUpActive(talkPopUp, false);
                 StartCoroutine(Typing());
             }
         }
@@ -56,8 +58,8 @@ public class NPCInteract : MonoBehaviour
                 // Check if the stack size is greater than 1 before giving the item
                 if (selectedItem != null)
                 {
-                    SetTalkPopUpActive(false);
-                    SetGivePopUpActive(true);
+                    SetPopUpActive(talkPopUp, false);
+                    SetPopUpActive(givePopUp, true);
                 }
             }
 
@@ -79,7 +81,7 @@ public class NPCInteract : MonoBehaviour
                 if (selectedItem.stackSize > 0)
                 {
                     GiveItemToNPC(selectedItem.itemData);
-                    SetGivePopUpActive(false);
+                    SetPopUpActive(givePopUp, false);
                 }
                 else
                 {
@@ -130,7 +132,8 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = true;
-            SetTalkPopUpActive(true); //
+            ResetAllPopUps();
+            SetPopUpActive(talkPopUp, true);
         }
     }
 
@@ -139,35 +142,27 @@ public class NPCInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            SetTalkPopUpActive(false);
-            SetGivePopUpActive(false);
+            ResetAllPopUps();
             eraseText();
         }
     }
 
-    private void SetTalkPopUpActive(bool isActive)
+    private void SetPopUpActive(GameObject popUp, bool isActive)
     {
-        if (talkPopUp != null)
+        if (popUp != null)
         {
-            talkPopUp.SetActive(isActive);
+            popUp.SetActive(isActive);
         }
     }
 
-    private void SetGivePopUpActive(bool isActive)
+    private void ResetAllPopUps()
     {
-        if (givePopUp != null)
-        {
-            givePopUp.SetActive(isActive);
-        }
+        SetPopUpActive(talkPopUp, false);
+        SetPopUpActive(givePopUp, false);
+        SetPopUpActive(dropPopUp, false);
+        SetPopUpActive(failPopUp, false);
+        SetPopUpActive(successPopUp, false);
     }
-    private void SetDropPopUpActive(bool isActive)
-    {
-        if (dropPopUp != null)
-        {
-            dropPopUp.SetActive(isActive);
-        }
-    }
-
     private void GiveItemToNPC(ItemData itemData)
     {
         // Get the selected item from the inventory
@@ -178,10 +173,16 @@ public class NPCInteract : MonoBehaviour
         if (orderData != null && itemData.itemName == orderData.orderItemName)
         {
             Debug.Log("Order fulfilled!");
+            ResetAllPopUps();
+            SetPopUpActive(successPopUp, true);
+            FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
         }
         else
         {
             Debug.Log("Order failed!");
+            ResetAllPopUps();
+            SetPopUpActive(failPopUp, true);
+
         }
 
         // Log a message (you can replace this with your actual logic)
