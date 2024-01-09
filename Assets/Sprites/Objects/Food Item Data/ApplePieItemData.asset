@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Apple Pie
   icon: {fileID: 21300000, guid: 899d5a368aa588647a6ae7d6f5b52595, type: 3}
   description: 
-  itemCost: 0
+  itemCost: 5

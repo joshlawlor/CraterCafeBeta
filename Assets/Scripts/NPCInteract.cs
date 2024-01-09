@@ -175,6 +175,7 @@ public class NPCInteract : MonoBehaviour
             Debug.Log("Order fulfilled!");
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
+            FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
         }
         else
         {
