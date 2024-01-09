@@ -13,7 +13,7 @@ public class SceneItemController : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.F))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F) && Inventory.Instance.inventory.Count < 3)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
 
@@ -33,7 +33,7 @@ public class SceneItemController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && Inventory.Instance.inventory.Count < 3)
         {
             playerInRange = true;
             SetPopUpActive(true);

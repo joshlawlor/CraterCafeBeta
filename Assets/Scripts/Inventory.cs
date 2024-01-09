@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
                 {
                     GameObject singletonObject = new GameObject("InventoryManager");
                     instance = singletonObject.AddComponent<Inventory>();
+                    DontDestroyOnLoad(singletonObject);  // Prevent destruction when loading a new scene
+
                 }
             }
 
@@ -54,6 +56,12 @@ public class Inventory : MonoBehaviour
         if (itemData == null)
         {
             Debug.LogError("Trying to add a null item to the inventory.");
+            return;
+        }
+
+        if (inventory.Count >= 3)
+        {
+            Debug.Log("Inventory is full. Cannot add more items.");
             return;
         }
 
@@ -103,6 +111,11 @@ public class Inventory : MonoBehaviour
                 OnInventoryChange?.Invoke(inventory);
             }
         }
+    }
+    private void OnDestroy()
+    {
+        // Make sure to set the instance to null when the object is destroyed
+        instance = null;
     }
 
 
