@@ -11,6 +11,9 @@ public class NPCInteract : MonoBehaviour
     public GameObject talkPopUp; // Reference to the PopUp GameObject
     public GameObject givePopUp;
 
+    public GameObject dropPopUp;
+    public NPCOrderData orderData;
+
     public string[] dialogue;
 
     private int index;
@@ -75,7 +78,7 @@ public class NPCInteract : MonoBehaviour
                 // Check if the stack size is greater than 0 before giving the item
                 if (selectedItem.stackSize > 0)
                 {
-                    GiveItemToNPC();
+                    GiveItemToNPC(selectedItem.itemData);
                     SetGivePopUpActive(false);
                 }
                 else
@@ -157,13 +160,29 @@ public class NPCInteract : MonoBehaviour
             givePopUp.SetActive(isActive);
         }
     }
+    private void SetDropPopUpActive(bool isActive)
+    {
+        if (dropPopUp != null)
+        {
+            dropPopUp.SetActive(isActive);
+        }
+    }
 
-    private void GiveItemToNPC()
+    private void GiveItemToNPC(ItemData itemData)
     {
         // Get the selected item from the inventory
         InventoryItem selectedItem = Inventory.Instance.inventory[Inventory.Instance.SelectedIndex];
 
         Inventory.Instance.Remove(selectedItem.itemData);
+
+        if (orderData != null && itemData.itemName == orderData.orderItemName)
+        {
+            Debug.Log("Order fulfilled!");
+        }
+        else
+        {
+            Debug.Log("Order failed!");
+        }
 
         // Log a message (you can replace this with your actual logic)
         Debug.Log($"Gave {selectedItem.itemData.itemName} to NPC!");
