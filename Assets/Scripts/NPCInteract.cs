@@ -11,16 +11,29 @@ public class NPCInteract : MonoBehaviour
     public GameObject talkPopUp; // Reference to the PopUp GameObject
     public GameObject givePopUp;
 
+    public GameObject orderPopUp;
+
     public GameObject successPopUp;
     public GameObject failPopUp;
     public GameObject dropPopUp;
     public NPCOrderData orderData;
+    private NPCWander npcWander;
+
 
     public string[] dialogue;
 
     private int index;
     public float wordSpeed;
     public bool playerIsClose;
+
+    private void Start()
+    {
+
+        npcWander = GetComponent<NPCWander>();
+
+        // Disable NPCWander script initially
+        npcWander.enabled = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -89,6 +102,11 @@ public class NPCInteract : MonoBehaviour
                     Debug.Log("Cannot give item with 0");
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextLine();
         }
     }
 
@@ -176,6 +194,7 @@ public class NPCInteract : MonoBehaviour
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
+            orderTimer = 60f;
         }
         else
         {
@@ -187,5 +206,44 @@ public class NPCInteract : MonoBehaviour
 
         // Log a message (you can replace this with your actual logic)
         Debug.Log($"Gave {selectedItem.itemData.itemName} to NPC!");
+    }
+
+
+    //ORDER LOGIC
+
+    private float orderTimer = 15f;
+
+    public void EnableOrderPopUp()
+    {
+        // Enable the "order" popUp
+        SetPopUpActive(orderPopUp, true);
+
+        // Start the 60-second timer
+        StartCoroutine(OrderTimer());
+        StartCoroutine(WaitAndEnableWander());
+
+    }
+
+    private IEnumerator OrderTimer()
+    {
+        while (orderTimer > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            orderTimer--;
+            Debug.Log("Order timer:" + orderTimer);
+            // You can update a timer UI here if needed
+        }
+
+        Debug.Log("Order Failed");
+        ResetAllPopUps();
+        SetPopUpActive(failPopUp, true); //
+    }
+
+    private IEnumerator WaitAndEnableWander()
+    {
+        yield return new WaitForSeconds(2f);
+
+        // Enable NPCWander after waiting for 4 seconds
+        npcWander.enabled = true;
     }
 }
