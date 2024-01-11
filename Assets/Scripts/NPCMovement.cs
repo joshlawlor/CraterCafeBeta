@@ -16,6 +16,8 @@ public class NPCMovement : MonoBehaviour
     // Index of current waypoint from which Enemy walks
     // to the next one
     private int waypointIndex = 0;
+    private NPCInteract npcInteract;
+
 
     // Use this for initialization
     private void Start()
@@ -23,6 +25,8 @@ public class NPCMovement : MonoBehaviour
 
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex].transform.position;
+        npcInteract = GetComponent<NPCInteract>();
+
     }
 
     // Update is called once per frame
@@ -59,6 +63,7 @@ public class NPCMovement : MonoBehaviour
                 if (waypointIndex == waypoints.Length)
                 {
                     // Trigger the animator to set Order to true
+                    npcInteract.EnableOrderPopUp();
 
                 }
             }

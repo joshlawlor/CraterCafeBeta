@@ -11,6 +11,8 @@ public class NPCInteract : MonoBehaviour
     public GameObject talkPopUp; // Reference to the PopUp GameObject
     public GameObject givePopUp;
 
+    public GameObject orderPopUp;
+
     public GameObject successPopUp;
     public GameObject failPopUp;
     public GameObject dropPopUp;
@@ -89,6 +91,11 @@ public class NPCInteract : MonoBehaviour
                     Debug.Log("Cannot give item with 0");
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextLine();
         }
     }
 
@@ -176,6 +183,7 @@ public class NPCInteract : MonoBehaviour
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
+            orderTimer = 60f;
         }
         else
         {
@@ -187,5 +195,34 @@ public class NPCInteract : MonoBehaviour
 
         // Log a message (you can replace this with your actual logic)
         Debug.Log($"Gave {selectedItem.itemData.itemName} to NPC!");
+    }
+
+
+    //ORDER LOGIC
+
+    private float orderTimer = 5f;
+
+    public void EnableOrderPopUp()
+    {
+        // Enable the "order" popUp
+        SetPopUpActive(orderPopUp, true);
+
+        // Start the 60-second timer
+        StartCoroutine(OrderTimer());
+    }
+
+    private IEnumerator OrderTimer()
+    {
+        while (orderTimer > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            orderTimer--;
+            Debug.Log("Order timer:" + orderTimer);
+            // You can update a timer UI here if needed
+        }
+
+        Debug.Log("Order Failed");
+        ResetAllPopUps();
+        SetPopUpActive(failPopUp, true); //
     }
 }
