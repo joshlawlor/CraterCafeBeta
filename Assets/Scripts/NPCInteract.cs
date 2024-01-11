@@ -17,12 +17,23 @@ public class NPCInteract : MonoBehaviour
     public GameObject failPopUp;
     public GameObject dropPopUp;
     public NPCOrderData orderData;
+    private NPCWander npcWander;
+
 
     public string[] dialogue;
 
     private int index;
     public float wordSpeed;
     public bool playerIsClose;
+
+    private void Start()
+    {
+
+        npcWander = GetComponent<NPCWander>();
+
+        // Disable NPCWander script initially
+        npcWander.enabled = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -200,7 +211,7 @@ public class NPCInteract : MonoBehaviour
 
     //ORDER LOGIC
 
-    private float orderTimer = 5f;
+    private float orderTimer = 15f;
 
     public void EnableOrderPopUp()
     {
@@ -209,6 +220,8 @@ public class NPCInteract : MonoBehaviour
 
         // Start the 60-second timer
         StartCoroutine(OrderTimer());
+        StartCoroutine(WaitAndEnableWander());
+
     }
 
     private IEnumerator OrderTimer()
@@ -224,5 +237,13 @@ public class NPCInteract : MonoBehaviour
         Debug.Log("Order Failed");
         ResetAllPopUps();
         SetPopUpActive(failPopUp, true); //
+    }
+
+    private IEnumerator WaitAndEnableWander()
+    {
+        yield return new WaitForSeconds(2f);
+
+        // Enable NPCWander after waiting for 4 seconds
+        npcWander.enabled = true;
     }
 }
