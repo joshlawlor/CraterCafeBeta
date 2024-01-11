@@ -58,8 +58,8 @@ public class NPCMovement : MonoBehaviour
                 // Check if the NPC has reached the final waypoint
                 if (waypointIndex == waypoints.Length)
                 {
-                    // Trigger the animator to set Emote to true
-                    animator.SetBool("Emote", true);
+                    // Trigger the animator to set Order to true
+
                 }
             }
         }
