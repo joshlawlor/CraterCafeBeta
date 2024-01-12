@@ -21,7 +21,7 @@ public class NPCAnimation : MonoBehaviour
     {
         // Calculate move direction
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
-
+    Debug.Log("UpdateAnimation Ran");
         // Set animator parameters
         if (animator != null)
         {

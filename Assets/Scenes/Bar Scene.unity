@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &10891479
 Transform:
   m_ObjectHideFlags: 0
@@ -149,12 +149,12 @@ Transform:
   m_GameObject: {fileID: 10891478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0016717983, w: -0.9999987}
-  m_LocalPosition: {x: 0.09, y: 1.2663, z: 0}
+  m_LocalPosition: {x: 0.14, y: 1.38, z: -0.11725176}
   m_LocalScale: {x: 1.1134052, y: 1.4466853, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1302385972}
-  m_Father: {fileID: 2030728941}
+  m_Father: {fileID: 1184403103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.192}
 --- !u!212 &10891480
 SpriteRenderer:
@@ -3043,12 +3043,12 @@ Transform:
   m_GameObject: {fileID: 512555837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0016717983, w: -0.9999987}
-  m_LocalPosition: {x: 0.055, y: 0.9029, z: 0}
-  m_LocalScale: {x: 0.4831691, y: 0.5959262, z: 1}
+  m_LocalPosition: {x: -16.165, y: -0.9970999, z: -0.11725176}
+  m_LocalScale: {x: 0.48316908, y: 0.5959262, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1307576167}
-  m_Father: {fileID: 2030728941}
+  m_Father: {fileID: 1184403103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.192}
 --- !u!212 &512555839
 SpriteRenderer:
@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACAn+tbblXFewIAADYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenWsPEMeU3lrsOD0k8cTp5MJFhsVoLCRGErGdjP97V0IY6vpi8fZD771d+CJM6AZyI9VaseJJFkB+TIg9k2+TIfgIJ7qXYss+oc95Z4WpbBJ1Oa/UMIl4aMu0rMEolv8Ue26TAwRbwUqp6lWxh1RqoxEuKdeAISWNrRYIfU3ICf+miS054ymK7ekTT0kwueAxB2FADanBbJ7YXzBf+JJpOHNIch/50und7D5eRHEcxatpELs+rcg5rRsorKihXZj4LguXJVCtT7DKcsk5054qMefGWZHSRrcoFBMKRlG64xfMbKsK2L4yVsi4/KUsNRjvjKLnJVPoYdeX/JKdsTXVh47YB+WtoxBEc0er6/r0X8I0dOFSyfqxvzgM7CWmYvnhlZ5zqs3I+jG8HLiHzqAj5Qe64/BegXiWayVbUWDQqNaWthqi5fB41ZZWkB8GvKN6A7bNaIDe8H7OVsPFyT+lnNW7bsYdsOXSWe7WAxQO5zcSdsujfQtELYs/Gt7ofrxlPvDAlDYY8iqFpbeTrbKpZOU8s2pak0olwMGedAOCcnPeYBtzO8Ob2Ojam8gDte+Tv9zH+tfkpsTBQ34Q3IQ28ngdlq7k8Ql09dIazgQMpG3gGX1KpRDdio096cu2rSppPirbt6z4d7VISJM4ShaLOL4DuithGpZFEEY0uQ/n34NFmRO3e0ygTso3HVFvD05NDM0F7ln/mZmsFW3cuheKHtfss5Yjy5ko5TZXAOKl63AlDgovwRezWBUMDdqCMUy4eZOvjHCZH6DIro0yp3R1MopmQ5eMNOxDGotkJHXflYxY+LrLGwUfDI728r7ZhVz+AlBLAwQUAAAICAAAgJ/rzHuEzG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kmGipbmRpZmZublxamJSWqquYVqKgaFRoqWpoYmFgVlaslIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAgJ/rW25VxXsCAAA2BQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAgJ/rzHuEzG0AAAB4AAAACQAkAAAAAAAAAAAAAADIAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAIADAAAAAA==
+    dataString: UEsDBBQAAAgIAACAn+tdyi7cfAIAADYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenWsPOA6Y3lriOD0k8cTt5MJFhsVoLCRGErGdjP97V0IY6vpi8fZD771d+CJM6AZyI9VaseJZFkC+T4g9k2+TIfgEJ7qXYss+oc95Z4WpbBJ1OW/UMIl4aMu0rMEolv8Qe26TAwRbwUqp6lWxh1RqoxEuKdeAISWNrRYIfU3ICf+miS0542ke29MnnpJgcsFjDsKAGqVGs2SxjBbxahrEvmgazhL3iyNfPL2b3cfRPF7aLNenFTmndQOFFTW0C5e+R+SyBKr1CVZZLjln2lMl5tw4K1La6BaFYkLBKEp3/IJZgkAFbF8ZK2Rc/lqWGox3RtHzA1PoYdeX/JSdsTXVh47YB+WtoxDMF45W1/X5v4Rp6MKlkvVTf3EY2EtMxfLDGz3nVJuR9WP4YeAeOoOOlB/ojsN7BeJFrpVsRYFBo1pb2mqYPwyPV21pBflhwDuqN2DbDI73k+7nbDVcnPxTylm9c1YuOmDLpbPcrQcoHM4vJOyWR/sWiFoWfzT8pvvxlvnAI1PaYMirFJbeTrbKppKV88yqaU0qlQAHe9INCMrNeYNtzO0Mb2Kja28ij9S+T/5yH+tfk5sSBw/5QXAT2sjjdVi6ksdn0NVrazgTMJC2gRf0KZVCdCs29qQv27aqpPmobN+y4t/VIiFN4nkSRXF8B3RXwjQsiyCc0+Q+XCyDqMyJ2z0mUCflm46otwenJobmAves/8xM1oo2bt0LRY9r9lnLkeVMlHKbKwDx2nW4EgeFl+CLWawKhgZtwRgm3LzJV0a4zA9QZNdGmVO6OhlFs6FLRhr2IY1FMpK670pGLHzd5Y2CDwZHe3nf7EIufwFQSwMEFAAACAgAAICf68x7hMxtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJhoqW5kaWZmbm5cWpiUlqqrmFaioGhUaKlqaGJhYFZWrJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAICf613KLtx8AgAANgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAICf68x7hMxtAAAAeAAAAAkAJAAAAAAAAAAAAAAAyQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACBAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -5944,7 +5944,6 @@ GameObject:
   - component: {fileID: 1184403112}
   - component: {fileID: 1184403108}
   - component: {fileID: 1184403111}
-  - component: {fileID: 1184403113}
   m_Layer: 0
   m_Name: AI_NPC
   m_TagString: Untagged
@@ -5961,11 +5960,15 @@ Transform:
   m_GameObject: {fileID: 1184403102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.55, y: -0.5, z: 0.08417558}
+  m_LocalPosition: {x: -8.34, y: 0.46, z: 0.08417558}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1603784667}
+  - {fileID: 10891479}
+  - {fileID: 512555838}
+  - {fileID: 1435966253}
+  - {fileID: 1549339327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1184403104
@@ -6005,7 +6008,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.5
   pickNextWaypointDist: 1.2
-  endReachedDistance: 0.09
+  endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -6079,7 +6082,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 392947284, guid: 475ba73076deff04e906928b849ef215, type: 3}
+  m_Sprite: {fileID: 1963363364, guid: 4ed4136ef0d182942bc02bdc1b0b2511, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6124,21 +6127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 1184403104}
-  wanderRadius: 10
+  wanderRadius: 5
   wanderInterval: 5
-  animator: {fileID: 1184403111}
---- !u!114 &1184403113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184403102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dab45e15eb646f4893c20a868be5c40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   animator: {fileID: 1184403111}
 --- !u!1 &1206294993
 GameObject:
@@ -8541,12 +8531,12 @@ Transform:
   m_GameObject: {fileID: 1435966252}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0016717983, w: -0.9999987}
-  m_LocalPosition: {x: 0.08, y: 1.28, z: 0}
-  m_LocalScale: {x: 1.222901, y: 1.3801651, z: 1}
+  m_LocalPosition: {x: -16.140001, y: -0.6199999, z: -0.11725176}
+  m_LocalScale: {x: 1.2229011, y: 1.380165, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 112894656}
-  m_Father: {fileID: 2030728941}
+  m_Father: {fileID: 1184403103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.192}
 --- !u!212 &1435966254
 SpriteRenderer:
@@ -9651,12 +9641,12 @@ Transform:
   m_GameObject: {fileID: 1549339326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0016717983, w: -0.9999987}
-  m_LocalPosition: {x: 0.055, y: 0.9029, z: 0}
-  m_LocalScale: {x: 0.4831691, y: 0.5959262, z: 1}
+  m_LocalPosition: {x: -16.165, y: -0.9970999, z: -0.11725176}
+  m_LocalScale: {x: 0.48316908, y: 0.5959262, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1166204804}
-  m_Father: {fileID: 2030728941}
+  m_Father: {fileID: 1184403103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.192}
 --- !u!212 &1549339328
 SpriteRenderer:
@@ -9821,13 +9811,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603784667}
-  - component: {fileID: 1603784674}
   - component: {fileID: 1603784673}
+  - component: {fileID: 1603784674}
   - component: {fileID: 1603784671}
   - component: {fileID: 1603784670}
   - component: {fileID: 1603784669}
-  - component: {fileID: 1603784668}
   - component: {fileID: 1603784672}
+  - component: {fileID: 1603784675}
   m_Layer: 7
   m_Name: NPC_B
   m_TagString: Untagged
@@ -9855,22 +9845,6 @@ Transform:
   - {fileID: 860774083}
   m_Father: {fileID: 1184403103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1603784668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603784666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76f4edf4839d31d4cb22696a961d0bb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiPath: {fileID: 1184403104}
-  wanderRadius: 10
-  wanderInterval: 5
-  animator: {fileID: 0}
 --- !u!114 &1603784669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9986,7 +9960,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 076d13dec01da7340a57cd09ea309a09, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -10001,7 +9975,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603784666}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 7c545956cfc303140baa16b96b1cada2, type: 2}
   m_Animations: []
@@ -10061,6 +10035,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1603784675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603784666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fcf0be6c834b74d80252c6661432a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1603784672}
 --- !u!1 &1702705912
 GameObject:
   m_ObjectHideFlags: 0
@@ -10579,10 +10566,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 10891479}
-  - {fileID: 512555838}
-  - {fileID: 1435966253}
-  - {fileID: 1549339327}
   - {fileID: 658713302}
   m_Father: {fileID: 1841205141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
