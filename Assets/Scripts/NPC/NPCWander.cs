@@ -1,76 +1,65 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using Pathfinding;
+using System.Collections; // Add this line for IEnumerator
 
 public class NPCWander : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] wanderPoints;
-
-    [SerializeField]
-    private float wanderSpeed = 1.5f;
-
-    private int currentWanderIndex = 0;
+    public AIPath aiPath;
+    public float wanderRadius = 10f;
+    public float wanderInterval = 5f;
 
     public Animator animator;
 
-    private Collider2D pathfinderCollider;
-
-
     private void Start()
     {
-        pathfinderCollider = transform.Find("PathFinder").GetComponent<Collider2D>();
+        // Get the Animator component
+        animator = GetComponent<Animator>();
 
+        // Get the AIPath component
+        aiPath = GetComponent<AIPath>();
+
+        if (aiPath == null)
+        {
+            Debug.LogError("AIPath component not found on NPC.");
+            return;
+        }
+
+        // Start the wandering coroutine
         StartCoroutine(Wander());
     }
+
     private IEnumerator Wander()
     {
         while (true)
         {
-            Vector3 targetPosition = wanderPoints[currentWanderIndex].position;
-
-            // Check if the next position is clear
-            if (IsPositionClear(targetPosition))
+            // Ensure aiPath is not null before accessing its properties
+            if (aiPath != null)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, wanderSpeed * Time.deltaTime);
+                // Generate a random point within the wanderRadius
+                Vector2 randomDirection = Random.insideUnitCircle.normalized * wanderRadius;
+                Vector3 targetPosition = transform.position + new Vector3(randomDirection.x, randomDirection.y, 0f);
 
-                Vector3 moveDirection = (targetPosition - transform.position).normalized;
-
-                animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.y);
-                animator.SetFloat("Speed", moveDirection.magnitude);
-
-                if (transform.position == targetPosition)
-                {
-                    // Move to the next wander point
-                    currentWanderIndex = (currentWanderIndex + 1) % wanderPoints.Length;
-
-                    // Pause between waypoints
-                    yield return new WaitForSeconds(2f);
-                }
-            }
-            else
-            {
-                // If the next position is not clear, wait for a short time
-                yield return new WaitForSeconds(0.5f);
+                // Set the AIPath's destination to the random point
+                aiPath.destination = targetPosition;
             }
 
-            yield return null;
+            // Wait for the specified interval before generating a new destination
+            yield return new WaitForSeconds(wanderInterval);
         }
     }
 
-    private bool IsPositionClear(Vector3 position)
+    private void FixedUpdate()
     {
-        // Get the Tilemap component for the "Furniture" layer
-        Tilemap furnitureTilemap = GameObject.Find("FurnitureTilemap").GetComponent<Tilemap>();
+        // Ensure aiPath is not null before accessing its properties
+        if (aiPath != null)
+        {
+            // Calculate move direction
+            Vector3 moveDirection = (aiPath.destination - transform.position).normalized;
 
-        // Get the tile at the specified position
-        Vector3Int cellPosition = furnitureTilemap.WorldToCell(position);
-        TileBase tile = furnitureTilemap.GetTile(cellPosition);
-
-        // If there is no tile at the position, the area is clear
-        return tile == null;
+            // Set animator parameters
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.y);
+            animator.SetFloat("Speed", aiPath.velocity.magnitude);
+        }
     }
-
 }
-
