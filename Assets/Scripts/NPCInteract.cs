@@ -54,10 +54,11 @@ public class NPCInteract : MonoBehaviour
             }
         }
 
-        if (dialogueText.text == dialogue[index])
+        if (index < dialogue.Length && dialogueText.text == dialogue[index])
         {
             continueButton.SetActive(true);
         }
+
 
         if (playerIsClose && Inventory.Instance.SelectedIndex != -1)
         {
