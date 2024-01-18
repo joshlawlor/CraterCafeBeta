@@ -7995,6 +7995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 1100996464}
+  itemData: {fileID: 0}
 --- !u!61 &599690019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8089,6 +8090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 710917684}
+  itemData: {fileID: 11400000, guid: fc7edd557d9fa604ea0b1802b71bf1e0, type: 2}
 --- !u!61 &616869206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9415,7 +9417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 731132589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c40293ed79efa4e96d56dbe0fc557c, type: 3}
+  m_Script: {fileID: 11500000, guid: 908905cb32ed81a4eaf6feaf1066658d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 440614247}
@@ -9718,6 +9720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 282395774}
+  itemData: {fileID: 0}
 --- !u!61 &789461682
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11575,6 +11578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 396274597}
+  itemData: {fileID: 0}
 --- !u!61 &1039246860
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18199,6 +18203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 844341826}
+  itemData: {fileID: 0}
 --- !u!61 &1471725983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19308,6 +19313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractPopUp: {fileID: 1976989001}
+  itemData: {fileID: 0}
 --- !u!61 &1522044400
 BoxCollider2D:
   m_ObjectHideFlags: 0
