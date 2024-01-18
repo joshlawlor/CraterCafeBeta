@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2622e21a75e0798408b007ff16412444
+guid: 42c063cabcd04a747abe65ca37e9ee46
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: purple_25_0
+      name: blue_50_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45853ebd8d746e44cadb88f6ea9cd71a
-      internalID: 1024387054
+      spriteID: 4991e767e3016a7469b8a9a301dddcab
+      internalID: -1691878524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_1
+      name: blue_50_1
       rect:
         serializedVersion: 2
         x: 16
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab1138fbf2223d14ebb95ae59fb55412
-      internalID: 743355042
+      spriteID: 3dd76ef9d5f3ec3428309f19d8bd37e0
+      internalID: 597271789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_2
+      name: blue_50_2
       rect:
         serializedVersion: 2
         x: 32
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f161285151ce8e4f9c5fc8d0be16f68
-      internalID: -1997303537
+      spriteID: 05cf3368f4d11b64a8f2782b906f6c31
+      internalID: -1592563316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_3
+      name: blue_50_3
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e5aef073d1ede84aaf282674a0d5f30
-      internalID: -1174509392
+      spriteID: d683befd0d3d30e41be5187ffa4d69ce
+      internalID: -1842417653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_4
+      name: blue_50_4
       rect:
         serializedVersion: 2
         x: 16
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec06cb441af7ec94f86cc7836ef63dc6
-      internalID: 1699790706
+      spriteID: 62852811abe8a9f49a584dcaf4fc3388
+      internalID: -1018383930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_5
+      name: blue_50_5
       rect:
         serializedVersion: 2
         x: 32
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03c27c9d4580f3a4382b07259e8f5a2e
-      internalID: 110338306
+      spriteID: b157f78d97442234285eebc852e7b94c
+      internalID: -1517889063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_6
+      name: blue_50_6
       rect:
         serializedVersion: 2
         x: 0
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06731f8403f9ee8498e2e402edba69b5
-      internalID: 518408475
+      spriteID: 420d902c4bdd44547bc94f36d599235b
+      internalID: -1266802250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purple_25_7
+      name: blue_50_7
       rect:
         serializedVersion: 2
         x: 16
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 732e44b5955fe7c40a99c6d7278d6fcd
-      internalID: -1478414672
+      spriteID: 786101e21a0512f45858ef623877bac2
+      internalID: -2130830392
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      purple_25_0: 1024387054
-      purple_25_1: 743355042
-      purple_25_2: -1997303537
-      purple_25_3: -1174509392
-      purple_25_4: 1699790706
-      purple_25_5: 110338306
-      purple_25_6: 518408475
-      purple_25_7: -1478414672
+      blue_50_0: -1691878524
+      blue_50_1: 597271789
+      blue_50_2: -1592563316
+      blue_50_3: -1842417653
+      blue_50_4: -1018383930
+      blue_50_5: -1517889063
+      blue_50_6: -1266802250
+      blue_50_7: -2130830392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
