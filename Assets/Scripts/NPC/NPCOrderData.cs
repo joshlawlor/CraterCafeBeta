@@ -7,4 +7,7 @@ public class NPCOrderData : ScriptableObject
 {
     public string orderItemName;
     public int orderPrice;
+
+    public Sprite icon;
+
 }
