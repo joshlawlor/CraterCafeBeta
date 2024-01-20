@@ -100,7 +100,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    private int selectedIndex = -1;
+    private int selectedIndex = 0;
 
     public int SelectedIndex
     {
