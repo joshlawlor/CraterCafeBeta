@@ -25,6 +25,7 @@ public class NPCInteract : MonoBehaviour
     private int index;
     public float wordSpeed;
     public bool playerIsClose;
+    private bool orderActive = true;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class NPCInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
         {
 
-            if (dialoguePanel.activeInHierarchy)
+            if (dialoguePanel.activeInHierarchy && orderActive)
             {
                 SetPopUpActive(talkPopUp, true);
                 eraseText();
@@ -70,7 +71,7 @@ public class NPCInteract : MonoBehaviour
                 InventoryItem selectedItem = Inventory.Instance.inventory[selectedIndex];
 
                 // Check if the stack size is greater than 1 before giving the item
-                if (selectedItem != null)
+                if (selectedItem != null && orderActive)
                 {
                     SetPopUpActive(talkPopUp, false);
                     SetPopUpActive(givePopUp, true);
@@ -92,7 +93,7 @@ public class NPCInteract : MonoBehaviour
                 InventoryItem selectedItem = Inventory.Instance.inventory[selectedIndex];
 
                 // Check if the stack size is greater than 0 before giving the item
-                if (selectedItem.stackSize > 0)
+                if (selectedItem.stackSize > 0 && orderActive)
                 {
                     GiveItemToNPC(selectedItem.itemData);
                     SetPopUpActive(givePopUp, false);
@@ -148,7 +149,7 @@ public class NPCInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && orderActive)
         {
             playerIsClose = true;
             ResetAllPopUps();
@@ -179,8 +180,7 @@ public class NPCInteract : MonoBehaviour
         SetPopUpActive(talkPopUp, false);
         SetPopUpActive(givePopUp, false);
         SetPopUpActive(dropPopUp, false);
-        SetPopUpActive(failPopUp, false);
-        SetPopUpActive(successPopUp, false);
+    
     }
     private void GiveItemToNPC(ItemData itemData)
     {
@@ -192,6 +192,7 @@ public class NPCInteract : MonoBehaviour
         if (orderData != null && itemData.itemName == orderData.orderItemName)
         {
             Debug.Log("Order fulfilled!");
+            orderActive = false;
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
@@ -200,6 +201,7 @@ public class NPCInteract : MonoBehaviour
         else
         {
             Debug.Log("Order failed!");
+            orderActive = false;
             ResetAllPopUps();
             SetPopUpActive(failPopUp, true);
 
