@@ -163,6 +163,11 @@ public class NPCInteract : MonoBehaviour
         {
             playerIsClose = false;
             ResetAllPopUps();
+            if (orderActive)
+            {
+                SetPopUpActive(talkPopUp, true);
+
+            }
             eraseText();
         }
     }
@@ -180,7 +185,7 @@ public class NPCInteract : MonoBehaviour
         SetPopUpActive(talkPopUp, false);
         SetPopUpActive(givePopUp, false);
         SetPopUpActive(dropPopUp, false);
-    
+
     }
     private void GiveItemToNPC(ItemData itemData)
     {
