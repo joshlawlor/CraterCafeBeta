@@ -67,7 +67,9 @@ public class Inventory : MonoBehaviour
 
         if (itemDictionary.TryGetValue(itemData, out InventoryItem item))
         {
-            item.AddToStack();
+            // item.AddToStack();
+            InventoryItem newItem = new InventoryItem(itemData);
+            inventory.Add(newItem);
             Debug.Log($"Added {itemData.itemName} to the inventory. Stack size: {item.stackSize}");
             OnInventoryChange?.Invoke(inventory);
         }
@@ -98,7 +100,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    private int selectedIndex = -1;
+    private int selectedIndex = 0;
 
     public int SelectedIndex
     {

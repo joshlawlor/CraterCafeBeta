@@ -22,6 +22,21 @@ public class InventoryManagement : MonoBehaviour
 
     private void Update()
     {
+        // Check for mouse scroll wheel input
+        float scrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
+
+        // Adjust the selected index based on the scroll wheel input
+        if (scrollWheelInput > 0f)
+        {
+            // Scroll up, select the previous item
+            Inventory.Instance.SelectedIndex = Mathf.Clamp(Inventory.Instance.SelectedIndex - 1, 0, Inventory.Instance.inventory.Count - 1);
+        }
+        else if (scrollWheelInput < 0f)
+        {
+            // Scroll down, select the next item
+            Inventory.Instance.SelectedIndex = Mathf.Clamp(Inventory.Instance.SelectedIndex + 1, 0, Inventory.Instance.inventory.Count - 1);
+        }
+
         // Handle slot selection based on player input (1-5)
         for (int i = 0; i < inventorySlots.Count; i++)
         {
@@ -30,6 +45,7 @@ public class InventoryManagement : MonoBehaviour
                 Inventory.Instance.SelectedIndex = i;
             }
         }
+
 
         // Update slot appearance based on selection
         UpdateSlotSelection();
@@ -87,6 +103,6 @@ public class InventoryManagement : MonoBehaviour
         {
             inventorySlots[i].SelectSlot(i == Inventory.Instance.SelectedIndex);
         }
-    }   
+    }
 
 }
