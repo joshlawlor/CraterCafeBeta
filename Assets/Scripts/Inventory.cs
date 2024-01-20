@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour
 
         if (itemDictionary.TryGetValue(itemData, out InventoryItem item))
         {
-            item.AddToStack();
+            // item.AddToStack();
             Debug.Log($"Added {itemData.itemName} to the inventory. Stack size: {item.stackSize}");
             OnInventoryChange?.Invoke(inventory);
         }
