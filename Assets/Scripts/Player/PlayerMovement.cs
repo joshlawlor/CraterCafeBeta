@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public float staminaRegenRate = .5f;
     private bool isRunning = false;
 
+    public float StaminaPercentage
+    {
+        get { return currentStamina / maxStamina; }
+    }
+
+
     public Rigidbody2D rb;
     public Animator animator;
 
