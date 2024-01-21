@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Adjust movement speed based on running state
-        moveSpeed = isRunning ? baseMoveSpeed * 3f : baseMoveSpeed;
+        moveSpeed = isRunning ? baseMoveSpeed * 1.8f : baseMoveSpeed;
 
 
         // Combine keyboard movement

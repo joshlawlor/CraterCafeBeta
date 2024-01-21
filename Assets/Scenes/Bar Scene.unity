@@ -11684,8 +11684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -306.2, y: 150.60591}
-  m_SizeDelta: {x: 97.0603, y: 61.4377}
+  m_AnchoredPosition: {x: 31.1, y: -207.3}
+  m_SizeDelta: {x: 150.4365, y: 43.8998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999858770
 MonoBehaviour:
@@ -11707,7 +11707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Stamina %:'
+  m_text: Stamina  %
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12786,7 +12786,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.566528
+  orthographic size: 9.036573
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -19439,8 +19439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoveSpeed: 2.5
-  maxStamina: 5
-  staminaRegenRate: 0.5
+  maxStamina: 4
+  staminaRegenRate: 0.15
   rb: {fileID: 1517040485}
   animator: {fileID: 1517040482}
 --- !u!58 &1517040484

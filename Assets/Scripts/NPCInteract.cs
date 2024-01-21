@@ -243,6 +243,7 @@ public class NPCInteract : MonoBehaviour
         }
 
         Debug.Log("Order Failed");
+        orderActive = false;
         ResetAllPopUps();
         SetPopUpActive(failPopUp, true); //
     }
