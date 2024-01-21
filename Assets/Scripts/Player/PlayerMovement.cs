@@ -8,7 +8,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public float baseMoveSpeed = 2.5f;
+    private float moveSpeed;
     public Rigidbody2D rb;
     public Animator animator;
 
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         // Handle keyboard input
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
+
+        moveSpeed = Input.GetKey(KeyCode.LeftShift) ? baseMoveSpeed * 2.3f : baseMoveSpeed;
+
 
         // Combine keyboard movement
         moveDirection = new Vector2(moveX, moveY).normalized;
