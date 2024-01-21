@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class NPCInteract : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public Text dialogueText;
+
+    public Image orderIconImage;
+    public TextMeshProUGUI orderTimerText;
+
+
 
     public GameObject continueButton;
     public GameObject talkPopUp; // Reference to the PopUp GameObject
@@ -226,6 +232,12 @@ public class NPCInteract : MonoBehaviour
         // Enable the "order" popUp
         SetPopUpActive(orderPopUp, true);
 
+        // Set the order icon sprite
+        if (orderIconImage != null && orderData != null)
+        {
+            orderIconImage.sprite = orderData.icon;
+        }
+
         // Start the 60-second timer
         StartCoroutine(OrderTimer());
         StartCoroutine(WaitAndEnableWander());
@@ -236,6 +248,10 @@ public class NPCInteract : MonoBehaviour
     {
         while (orderTimer > 0)
         {
+            if (orderTimerText != null)
+            {
+                orderTimerText.text = orderTimer.ToString();
+            }
             yield return new WaitForSeconds(1f);
             orderTimer--;
             Debug.Log("Order timer:" + orderTimer);
