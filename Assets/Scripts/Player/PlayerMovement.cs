@@ -10,11 +10,23 @@ public class PlayerMovement : MonoBehaviour
 {
     public float baseMoveSpeed = 2.5f;
     private float moveSpeed;
+
+    private float currentStamina;
+    public float maxStamina = 5;
+    public float staminaRegenRate = .5f;
+    private bool isRunning = false;
+
     public Rigidbody2D rb;
     public Animator animator;
 
     private Vector2 moveDirection;
     private Vector2 lastMoveDirection; // Store the last non-zero movement direction
+
+
+    void Start()
+    {
+        currentStamina = maxStamina;
+    }
 
     void Update()
     {
@@ -24,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        RegenerateStamina();
+
     }
 
     void ProcessInputs()
@@ -32,7 +46,20 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        moveSpeed = Input.GetKey(KeyCode.LeftShift) ? baseMoveSpeed * 2.3f : baseMoveSpeed;
+        // Check if the "Shift" key is held down to adjust the movement speed
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        {
+            isRunning = true;
+            currentStamina -= Time.deltaTime;  // Consume stamina while running
+            Debug.Log(currentStamina);
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        // Adjust movement speed based on running state
+        moveSpeed = isRunning ? baseMoveSpeed * 3f : baseMoveSpeed;
 
 
         // Combine keyboard movement
@@ -60,6 +87,18 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("LastMoveDirectionX", lastMoveDirection.x);
             animator.SetFloat("LastMoveDirectionY", lastMoveDirection.y);
+        }
+    }
+
+    void RegenerateStamina()
+    {
+        // Regenerate stamina over time if not running
+        if (!isRunning && currentStamina < maxStamina)
+        {
+            currentStamina += staminaRegenRate * Time.deltaTime;
+
+            // Clamp the stamina to the maximum value
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
     }
 }
