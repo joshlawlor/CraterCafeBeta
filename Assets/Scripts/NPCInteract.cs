@@ -210,7 +210,7 @@ public class NPCInteract : MonoBehaviour
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
-            orderTimer = 60f;
+            orderTimer = 15f;
         }
         else
         {
@@ -242,7 +242,8 @@ public class NPCInteract : MonoBehaviour
             orderIconImage.sprite = orderData.icon;
         }
 
-        // Start the 60-second timer
+
+        // Start the 15-second timer
         StartCoroutine(OrderTimer());
         StartCoroutine(WaitAndEnableWander());
 
@@ -262,10 +263,15 @@ public class NPCInteract : MonoBehaviour
             // You can update a timer UI here if needed
         }
 
-        Debug.Log("Order Failed");
-        orderActive = false;
-        ResetAllPopUps();
-        SetPopUpActive(failPopUp, true); //
+        if (orderActive)
+        {
+            Debug.Log("Order Failed");
+            animator.SetBool("OrderFail", true);
+            orderActive = false;
+            ResetAllPopUps();
+            SetPopUpActive(failPopUp, true); //
+        }
+
     }
 
     private IEnumerator WaitAndEnableWander()
