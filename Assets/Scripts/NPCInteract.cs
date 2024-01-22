@@ -25,6 +25,7 @@ public class NPCInteract : MonoBehaviour
     public NPCOrderData orderData;
     private NPCWander npcWander;
 
+    public Animator animator;
 
     public string[] dialogue;
 
@@ -204,6 +205,8 @@ public class NPCInteract : MonoBehaviour
         {
             Debug.Log("Order fulfilled!");
             orderActive = false;
+            animator.SetBool("OrderSuccess", true);
+
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);

@@ -4972,6 +4972,7 @@ MonoBehaviour:
   failPopUp: {fileID: 0}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 0}
+  animator: {fileID: 0}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
@@ -9049,6 +9050,7 @@ MonoBehaviour:
   failPopUp: {fileID: 0}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 0}
+  animator: {fileID: 0}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
@@ -11116,6 +11118,7 @@ MonoBehaviour:
   failPopUp: {fileID: 0}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 0}
+  animator: {fileID: 0}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
@@ -13816,6 +13819,7 @@ MonoBehaviour:
   failPopUp: {fileID: 1435966252}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 11400000, guid: fcaa39082378c43459e337cede418acd, type: 2}
+  animator: {fileID: 1184403111}
   dialogue: []
   wordSpeed: 0
   playerIsClose: 0
@@ -20950,6 +20954,7 @@ MonoBehaviour:
   failPopUp: {fileID: 0}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 0}
+  animator: {fileID: 0}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
@@ -23888,6 +23893,7 @@ MonoBehaviour:
   failPopUp: {fileID: 0}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 0}
+  animator: {fileID: 0}
   dialogue:
   - Hello!
   - I would like a Mr. Beast Burger!
