@@ -254,7 +254,7 @@ public class NPCInteract : MonoBehaviour
             }
             yield return new WaitForSeconds(1f);
             orderTimer--;
-            Debug.Log("Order timer:" + orderTimer);
+            // Debug.Log("Order timer:" + orderTimer);
             // You can update a timer UI here if needed
         }
 
