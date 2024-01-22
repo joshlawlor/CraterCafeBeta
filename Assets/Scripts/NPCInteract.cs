@@ -216,6 +216,7 @@ public class NPCInteract : MonoBehaviour
         {
             Debug.Log("Order failed!");
             orderActive = false;
+            animator.SetBool("OrderFail", true);
             ResetAllPopUps();
             SetPopUpActive(failPopUp, true);
 
