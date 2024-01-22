@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8bd086b091179c4f886b49902c808a4, type: 3}
-  m_Name: PurpleDrinkData
+  m_Script: {fileID: 11500000, guid: 5f6cad368f466e14ab240766424b6657, type: 3}
+  m_Name: Purp Punch NPC Order Data
   m_EditorClassIdentifier: 
-  itemName: Purp Punch
+  orderItemName: Purp Punch
+  orderPrice: 0
   icon: {fileID: 1582397157, guid: b1aaf09351bdb864e8466c245fcad244, type: 3}
-  description: Purp Punch
-  itemCost: 5
