@@ -24,6 +24,8 @@ public class NPCInteract : MonoBehaviour
     public GameObject dropPopUp;
     public NPCOrderData orderData;
     private NPCWander npcWander;
+    public Collider2D npcCollider;
+
 
     public Animator animator;
 
@@ -33,6 +35,10 @@ public class NPCInteract : MonoBehaviour
     public float wordSpeed;
     public bool playerIsClose;
     private bool orderActive = true;
+    public float exitTimerDuration = 30f; // Duration of the exit timer in seconds
+    public Vector3 exitPoint; // The position where the NPC will move after the timer
+    private bool exitTimerActive = false; // Flag to check if the exit timer is active
+
 
     private void Start()
     {
@@ -116,6 +122,22 @@ public class NPCInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             NextLine();
+        }
+
+        if (exitTimerActive)
+        {
+            // Check if the exit timer has finished
+            if (exitTimerDuration <= 0)
+            {
+                // Move towards the exit point
+                MoveTowardsExitPoint();
+            }
+            else
+            {
+                // Update and display the exit timer
+                exitTimerDuration -= Time.deltaTime;
+                // Update UI or other components if needed
+            }
         }
     }
 
@@ -205,8 +227,8 @@ public class NPCInteract : MonoBehaviour
         {
             Debug.Log("Order fulfilled!");
             orderActive = false;
+            StartCoroutine(ExitTimer());
             animator.SetBool("OrderSuccess", true);
-
             ResetAllPopUps();
             SetPopUpActive(successPopUp, true);
             FindObjectOfType<BankScoreController>()?.UpdateBankScore(itemData.itemCost);
@@ -216,6 +238,7 @@ public class NPCInteract : MonoBehaviour
         {
             Debug.Log("Order failed!");
             orderActive = false;
+            StartCoroutine(ExitTimer());
             animator.SetBool("OrderFail", true);
             ResetAllPopUps();
             SetPopUpActive(failPopUp, true);
@@ -268,10 +291,46 @@ public class NPCInteract : MonoBehaviour
             Debug.Log("Order Failed");
             animator.SetBool("OrderFail", true);
             orderActive = false;
+            StartCoroutine(ExitTimer());
             ResetAllPopUps();
             SetPopUpActive(failPopUp, true); //
         }
 
+    }
+
+    private IEnumerator ExitTimer()
+    {
+        // Set the exit timer duration
+        exitTimerDuration = 15;
+
+        // Set the exit point (you can set this value wherever needed)
+        // exitPoint = new Vector3(10f, 0f, 0f);
+
+        // Set the exit timer active flag
+        exitTimerActive = true;
+
+        yield return null;
+    }
+
+    private void MoveTowardsExitPoint()
+    {
+        npcWander.enabled = false;
+        npcCollider.enabled = false;
+
+        // Move the NPC towards the exit point
+        transform.position = Vector3.MoveTowards(transform.position, exitPoint, 3 * Time.deltaTime);
+        Vector3 moveDirection = (exitPoint - transform.position).normalized;
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.magnitude);
+
+        // Check if the NPC has reached the exit point
+        if (transform.position == exitPoint)
+        {
+            // Destroy the NPC GameObject
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator WaitAndEnableWander()

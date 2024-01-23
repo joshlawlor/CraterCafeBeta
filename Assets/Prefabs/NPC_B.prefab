@@ -1044,8 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiPath: {fileID: 7746569164369144212}
-  wanderRadius: 5
-  wanderInterval: 5
+  wanderRadius: 8
+  wanderInterval: 6
   animator: {fileID: 4883394464428343602}
 --- !u!212 &8348962075623363619
 SpriteRenderer:
@@ -1139,6 +1139,8 @@ MonoBehaviour:
   - {x: -8.5, y: -3, z: 0}
   - {x: -8.5, y: -1.5, z: 0}
   - {x: -8.5, y: 0.5, z: 0}
+  - {x: -5.5, y: 0.5, z: 0}
+  - {x: -1, y: -1.5, z: 0}
   moveSpeed: 2
   animator: {fileID: 4883394464428343602}
   npcCollider: {fileID: -5770538724680922973}
@@ -1166,10 +1168,13 @@ MonoBehaviour:
   failPopUp: {fileID: 227994833792977311}
   dropPopUp: {fileID: 0}
   orderData: {fileID: 11400000, guid: d440b472a1424c6488c6be8715bcd746, type: 2}
+  npcCollider: {fileID: -5770538724680922973}
   animator: {fileID: 4883394464428343602}
   dialogue: []
   wordSpeed: 0
   playerIsClose: 0
+  exitTimerDuration: 15
+  exitPoint: {x: -16, y: -3.5, z: 0}
 --- !u!58 &3280718647954679643
 CircleCollider2D:
   m_ObjectHideFlags: 0

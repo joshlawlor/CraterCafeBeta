@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentStamina;
     public float maxStamina = 5;
-    public float staminaRegenRate = .5f;
+    public float staminaRegenRate = 1.35f;
     private bool isRunning = false;
 
     public float StaminaPercentage

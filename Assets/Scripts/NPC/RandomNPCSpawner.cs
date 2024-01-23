@@ -10,7 +10,7 @@ public class RandomNPCSpawner : MonoBehaviour
 
     public float spawnIntervalMin = 5f;
     public float spawnIntervalMax = 10f;
-    public int maxNPCs = 15;
+    public int maxNPCs = 5;
 
     private void Start()
     {
