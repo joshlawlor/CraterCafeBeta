@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 3424092830156280666}
   - component: {fileID: 3280718647954679643}
   - component: {fileID: 8811615800722415218}
+  - component: {fileID: -5770538724680922973}
   m_Layer: 0
   m_Name: NPC_B
   m_TagString: Untagged
@@ -1132,14 +1133,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {x: -16, y: -3.5, z: 0}
-  - {x: -13, y: -3.5, z: 0}
-  - {x: -9, y: -3.5, z: 0}
-  - {x: -7.5, y: -3.5, z: 0}
-  - {x: -7.5, y: -1.5, z: 0}
-  - {x: -7.5, y: 0.5, z: 0}
+  - {x: -16, y: -3, z: 0}
+  - {x: -13, y: -3, z: 0}
+  - {x: -9, y: -3, z: 0}
+  - {x: -8.5, y: -3, z: 0}
+  - {x: -8.5, y: -1.5, z: 0}
+  - {x: -8.5, y: 0.5, z: 0}
   moveSpeed: 2
   animator: {fileID: 4883394464428343602}
+  npcCollider: {fileID: -5770538724680922973}
 --- !u!114 &3424092830156280666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,6 +1232,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &-5770538724680922973
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291059565252397619}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &6834038894563918482
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class NPCMovement : MonoBehaviour
     // to the next one
     private int waypointIndex = 0;
     private NPCInteract npcInteract;
-
+    public Collider2D npcCollider;
 
     // Use this for initialization
     private void Start()
@@ -26,7 +26,7 @@ public class NPCMovement : MonoBehaviour
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex];
         npcInteract = GetComponent<NPCInteract>();
-
+        // npcCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -64,6 +64,7 @@ public class NPCMovement : MonoBehaviour
                 {
                     // Trigger the animator to set Order to true
                     npcInteract.EnableOrderPopUp();
+                    npcCollider.enabled = true;
 
                 }
             }
