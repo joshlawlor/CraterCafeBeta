@@ -6,7 +6,7 @@ public class NPCMovement : MonoBehaviour
 {
     // Array of waypoints to walk from one to the next one
     [SerializeField]
-    private Transform[] waypoints;
+    private Vector3[] waypoints;
 
     // Walk speed that can be set in Inspector
     [SerializeField]
@@ -24,7 +24,7 @@ public class NPCMovement : MonoBehaviour
     {
 
         // Set position of Enemy as position of the first waypoint
-        transform.position = waypoints[waypointIndex].transform.position;
+        transform.position = waypoints[waypointIndex];
         npcInteract = GetComponent<NPCInteract>();
 
     }
@@ -45,7 +45,7 @@ public class NPCMovement : MonoBehaviour
         // If enemy reached last waypoint then it stops
         if (waypointIndex <= waypoints.Length - 1)
         {
-            Vector3 targetPosition = waypoints[waypointIndex].position;
+            Vector3 targetPosition = waypoints[waypointIndex];
 
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
