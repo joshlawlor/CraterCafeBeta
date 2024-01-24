@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 4332913913538466216}
   - component: {fileID: 8220994258425349092}
   - component: {fileID: 2664781446176634243}
+  - component: {fileID: -3627701466841406013}
   m_Layer: 0
   m_Name: NPC_A
   m_TagString: Untagged
@@ -974,7 +975,7 @@ MonoBehaviour:
     interval: 0.5
     sensitivity: 1
     maximumInterval: 2
-    visualizeSensitivity: 1
+    visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
@@ -1129,6 +1130,7 @@ MonoBehaviour:
   playerIsClose: 0
   exitTimerDuration: 15
   exitPoint: {x: -16, y: -3.5, z: 0}
+  doorPoint: {x: -7.5, y: -3.5, z: 0}
 --- !u!58 &4332913913538466216
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1226,6 +1228,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &-3627701466841406013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080033578703293041}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f3e57b05313ed48b56396c02e4077e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiPath: {fileID: 4235914202865012013}
+  doorPoint: {x: -7.5, y: -3.5, z: 0}
+  exitPoint: {x: -16, y: -3.5, z: 0}
+  npcCollider: {fileID: 2664781446176634243}
+  animator: {fileID: 5938453095156615537}
 --- !u!1 &5392736420460294608
 GameObject:
   m_ObjectHideFlags: 0
