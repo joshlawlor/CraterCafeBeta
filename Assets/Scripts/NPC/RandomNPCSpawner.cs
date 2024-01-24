@@ -12,14 +12,28 @@ public class RandomNPCSpawner : MonoBehaviour
     public float spawnIntervalMax = 10f;
     public int maxNPCs = 5;
 
+     private Coroutine spawnCoroutine;
+
     private void Start()
     {
-
-        StartCoroutine(SpawnNPCs());
-
+        // StartSpawning();
     }
 
-      private IEnumerator SpawnNPCs()
+    public void StartSpawning()
+    {
+        // Start spawning NPCs and store the coroutine reference
+        spawnCoroutine = StartCoroutine(SpawnNPCs());
+    }
+
+    public void StopSpawning()
+    {
+        // Stop spawning NPCs using the stored coroutine reference
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
+    }
+    private IEnumerator SpawnNPCs()
     {
         int spawnedNPCs = 0;
 
