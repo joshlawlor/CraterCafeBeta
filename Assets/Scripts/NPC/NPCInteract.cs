@@ -308,7 +308,7 @@ public class NPCInteract : MonoBehaviour
     private IEnumerator ExitTimer()
     {
         // Set the exit timer duration
-        exitTimerDuration = 15;
+        exitTimerDuration = 7;
 
         // Set the exit point (you can set this value wherever needed)
         // exitPoint = new Vector3(10f, 0f, 0f);

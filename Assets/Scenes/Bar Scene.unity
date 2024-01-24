@@ -4778,10 +4778,10 @@ MonoBehaviour:
   - {fileID: 1272494005}
   NPCPrefabs:
   - {fileID: 5080033578703293041, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-  - {fileID: 6291059565252397619, guid: 346527792700fb6468872c2fdd5c528f, type: 3}
+  - {fileID: 5080033578703293041, guid: 2095e268f3c0cc743bd59fc771672124, type: 3}
   spawnIntervalMin: 5
   spawnIntervalMax: 8
-  maxNPCs: 5
+  maxNPCs: 25
 --- !u!4 &546588273
 Transform:
   m_ObjectHideFlags: 0

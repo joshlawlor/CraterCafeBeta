@@ -34,6 +34,7 @@ public class NPCExitScene : MonoBehaviour
     {
         // Move towards the door point using pathfinding
         aiPath.destination = doorPoint;
+        npcCollider.enabled = false;
 
         while ((transform.position - doorPoint).sqrMagnitude > 0.01f)
         {
@@ -49,7 +50,6 @@ public class NPCExitScene : MonoBehaviour
         }
 
         // NPC has reached the door point, disable collider
-        npcCollider.enabled = false;
 
         // Stop using pathfinding and move towards the exit point using transform
         usePathfinding = false;
