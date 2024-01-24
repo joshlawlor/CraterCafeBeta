@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isRunning = true;
             currentStamina -= Time.deltaTime;  // Consume stamina while running
-            Debug.Log(currentStamina);
         }
         else
         {
