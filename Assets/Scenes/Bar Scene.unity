@@ -3899,6 +3899,7 @@ MonoBehaviour:
   playerIsClose: 0
   exitTimerDuration: 30
   exitPoint: {x: 0, y: 0, z: 0}
+  doorPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &389151488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4777,10 +4778,10 @@ MonoBehaviour:
   - {fileID: 1272494005}
   NPCPrefabs:
   - {fileID: 5080033578703293041, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-  - {fileID: 6291059565252397619, guid: 346527792700fb6468872c2fdd5c528f, type: 3}
+  - {fileID: 5080033578703293041, guid: 2095e268f3c0cc743bd59fc771672124, type: 3}
   spawnIntervalMin: 5
-  spawnIntervalMax: 10
-  maxNPCs: 15
+  spawnIntervalMax: 8
+  maxNPCs: 25
 --- !u!4 &546588273
 Transform:
   m_ObjectHideFlags: 0
@@ -6636,7 +6637,7 @@ Transform:
   m_GameObject: {fileID: 654594966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.17, y: -3.5, z: 0.016799469}
+  m_LocalPosition: {x: -7.43, y: -3.5, z: 0.016799469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8213,6 +8214,7 @@ MonoBehaviour:
   playerIsClose: 0
   exitTimerDuration: 30
   exitPoint: {x: 0, y: 0, z: 0}
+  doorPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &869496920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15118,7 +15120,7 @@ Transform:
   m_GameObject: {fileID: 1517040480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.96, y: -1.08, z: 0.32754213}
+  m_LocalPosition: {x: 0.53, y: 3.27, z: 0.32754213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18957,6 +18959,7 @@ MonoBehaviour:
   playerIsClose: 0
   exitTimerDuration: 30
   exitPoint: {x: 0, y: 0, z: 0}
+  doorPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &2030728943
 MonoBehaviour:
   m_ObjectHideFlags: 0

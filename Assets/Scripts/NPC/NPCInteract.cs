@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Mathematics;
+using Pathfinding;
 public class NPCInteract : MonoBehaviour
 {
     public GameObject dialoguePanel;
@@ -24,6 +26,8 @@ public class NPCInteract : MonoBehaviour
     public GameObject dropPopUp;
     public NPCOrderData orderData;
     private NPCWander npcWander;
+
+    private NPCExitScene npcExitScene;
     public Collider2D npcCollider;
 
 
@@ -37,14 +41,16 @@ public class NPCInteract : MonoBehaviour
     private bool orderActive = true;
     public float exitTimerDuration = 30f; // Duration of the exit timer in seconds
     public Vector3 exitPoint; // The position where the NPC will move after the timer
+    public Vector3 doorPoint;
     private bool exitTimerActive = false; // Flag to check if the exit timer is active
-
+    private AIPath aiPath;
 
     private void Start()
     {
 
         npcWander = GetComponent<NPCWander>();
-
+        npcExitScene = GetComponent<NPCExitScene>();
+        aiPath = GetComponent<AIPath>();
         // Disable NPCWander script initially
         npcWander.enabled = false;
     }
@@ -129,6 +135,7 @@ public class NPCInteract : MonoBehaviour
             // Check if the exit timer has finished
             if (exitTimerDuration <= 0)
             {
+                aiPath.destination = doorPoint;
                 // Move towards the exit point
                 MoveTowardsExitPoint();
             }
@@ -301,7 +308,7 @@ public class NPCInteract : MonoBehaviour
     private IEnumerator ExitTimer()
     {
         // Set the exit timer duration
-        exitTimerDuration = 15;
+        exitTimerDuration = 7;
 
         // Set the exit point (you can set this value wherever needed)
         // exitPoint = new Vector3(10f, 0f, 0f);
@@ -315,22 +322,7 @@ public class NPCInteract : MonoBehaviour
     private void MoveTowardsExitPoint()
     {
         npcWander.enabled = false;
-        npcCollider.enabled = false;
-
-        // Move the NPC towards the exit point
-        transform.position = Vector3.MoveTowards(transform.position, exitPoint, 3 * Time.deltaTime);
-        Vector3 moveDirection = (exitPoint - transform.position).normalized;
-
-        animator.SetFloat("Horizontal", moveDirection.x);
-        animator.SetFloat("Vertical", moveDirection.y);
-        animator.SetFloat("Speed", moveDirection.magnitude);
-
-        // Check if the NPC has reached the exit point
-        if (transform.position == exitPoint)
-        {
-            // Destroy the NPC GameObject
-            Destroy(gameObject);
-        }
+        npcExitScene.enabled = true; //
     }
 
     private IEnumerator WaitAndEnableWander()
