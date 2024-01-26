@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PathTrigger
+  - NPC
   layers:
   - Default
   - TransparentFX
