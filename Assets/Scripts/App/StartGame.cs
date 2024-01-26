@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class StartGame : MonoBehaviour
 {
+    public TextMeshProUGUI BarStatus;
+
+    public StatsTracker statsTracker; // Reference to the StatsTracker script
 
     public RandomNPCSpawner randomNPCSpawning;
+
     public GameObject OpenPopUp;
     public GameObject OpenDoors;
 
@@ -53,12 +59,33 @@ public class StartGame : MonoBehaviour
 
     }
 
+    private void UpdateBarStatus(bool barOpen)
+    {
+        this.barOpen = barOpen; // Update the local npcCount
+        if (BarStatus != null)
+        {
+            if (barOpen == true)
+            {
+                BarStatus.text = "Bar: Open ";
+
+            }
+            else
+            {
+                BarStatus.text = "Bar: Closed ";
+
+            }
+        }
+
+    }
+
+
 
 
 
     // Update is called once per frame
     void Update()
     {
+
         // Check if the player has pressed the space key
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
@@ -73,6 +100,7 @@ public class StartGame : MonoBehaviour
                     randomNPCSpawning.StartSpawning();
 
                     barOpen = true;
+                    UpdateBarStatus(barOpen);
                     ResetAllPopUps();
                     // Output a message indicating the status change
                     Debug.Log("RandomNPCSpawning status toggled. New status: Running");
@@ -80,9 +108,8 @@ public class StartGame : MonoBehaviour
                 else if (barOpen == true) // BAR IS OPEN, THEN CLOSE THE BAR
                 {
                     randomNPCSpawning.StopSpawning();
-                    OpenDoors.SetActive(!OpenDoors.activeSelf);
-                    ClosedDoors.SetActive(!ClosedDoors.activeSelf);
                     barOpen = false;
+                    UpdateBarStatus(barOpen);
                     ResetAllPopUps();
                     // Output a message indicating the status change
                     Debug.Log("RandomNPCSpawning status toggled. New status: Stopped ");
