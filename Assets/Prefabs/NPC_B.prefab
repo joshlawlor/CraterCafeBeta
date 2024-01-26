@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {x: -13, y: -3, z: 0}
+  - {x: -11, y: -3, z: 0}
   - {x: -10, y: -3, z: 0}
   - {x: -9, y: -3, z: 0}
   - {x: -8.5, y: -3, z: 0}
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 4235914202865012013}
   doorPoint: {x: -7.5, y: -3.5, z: 0}
-  exitPoint: {x: -16, y: -3.5, z: 0}
+  exitPoint: {x: -13, y: -3.5, z: 0}
   npcCollider: {fileID: 2664781446176634243}
   animator: {fileID: 5938453095156615537}
 --- !u!1 &5392736420460294608

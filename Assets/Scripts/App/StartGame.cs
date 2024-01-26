@@ -67,12 +67,13 @@ public class StartGame : MonoBehaviour
             if (barOpen == true)
             {
                 BarStatus.text = "Bar: Open ";
+                BarStatus.color = Color.green;
 
             }
             else
             {
                 BarStatus.text = "Bar: Closed ";
-
+                BarStatus.color = Color.red;
             }
         }
 
