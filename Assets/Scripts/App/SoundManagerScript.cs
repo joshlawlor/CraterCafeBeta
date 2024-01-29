@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public AudioClip barMusic;
-    static AudioSource audioSource;
+    public List<AudioClip> playlist;
+    private AudioSource audioSource;
+    private int currentSongIndex = 0;
+    public float switchInterval = 30f; // Time interval to switch songs in seconds
 
     // Start is called before the first frame update
     void Start()
     {
-
         // Create an AudioSource component if it doesn't exist
         if (audioSource == null)
         {
@@ -21,17 +22,50 @@ public class SoundManagerScript : MonoBehaviour
         PlayBarMusic();
     }
 
-    // Function to play the "barMusic" audio clip
-    public void PlayBarMusic()
+    // Function to play the next song in the playlist
+    private void PlayNextSong()
     {
-        if (audioSource != null && barMusic != null)
+        // Check if there are songs in the playlist
+        if (playlist.Count > 0)
         {
-            audioSource.clip = barMusic;
+            // Increment the index
+            currentSongIndex = (currentSongIndex + 1) % playlist.Count;
+
+            // Set the next song and play it
+            audioSource.clip = playlist[currentSongIndex];
             audioSource.Play();
         }
         else
         {
-            Debug.LogError("AudioSource or barMusic clip is not set in the SoundManagerScript.");
+            Debug.LogError("Playlist is empty. Add audio clips to the playlist.");
+        }
+    }
+
+    // Function to play the "barMusic" audio clip
+    public void PlayBarMusic()
+    {
+        if (audioSource != null && playlist.Count > 0)
+        {
+            // Set the initial song
+            audioSource.clip = playlist[currentSongIndex];
+            audioSource.Play();
+
+            // Start a coroutine to switch songs every 'switchInterval' seconds
+            StartCoroutine(SwitchSongs());
+        }
+        else
+        {
+            Debug.LogError("AudioSource or playlist is not set in the SoundManagerScript.");
+        }
+    }
+
+    // Coroutine to switch songs at regular intervals
+    private IEnumerator SwitchSongs()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(switchInterval);
+            PlayNextSong();
         }
     }
 }
