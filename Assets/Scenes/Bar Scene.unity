@@ -11054,6 +11054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314a9aa2207796c4cae23f0250331f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playlist:
+  - {fileID: 8300000, guid: cbdcedf3e71b4a94d8e8bad2f210aa59, type: 3}
+  - {fileID: 8300000, guid: f05d5df266a09cf4e958ef5617ced00e, type: 3}
+  - {fileID: 8300000, guid: f15af3da1b45ff947a981d8d8b261821, type: 3}
+  switchInterval: 15
+  fadeDuration: 5
 --- !u!1 &1424462529
 GameObject:
   m_ObjectHideFlags: 0

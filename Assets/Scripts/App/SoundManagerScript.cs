@@ -57,6 +57,8 @@ public class SoundManagerScript : MonoBehaviour
 
         startTime = Time.time;
 
+        // Play the next song
+        audioSource.Play();
         // Fade in the next song
         while (Time.time < startTime + fadeDuration)
         {
@@ -64,8 +66,7 @@ public class SoundManagerScript : MonoBehaviour
             yield return null;
         }
 
-        // Play the next song
-        audioSource.Play();
+
     }
 
     // Function to play the "barMusic" audio clip
