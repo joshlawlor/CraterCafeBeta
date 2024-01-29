@@ -8,6 +8,7 @@ public class SoundManagerScript : MonoBehaviour
     private AudioSource audioSource;
     private int currentSongIndex = 0;
     public float switchInterval = 30f; // Time interval to switch songs in seconds
+    public float fadeDuration = 3f; // Fade duration in seconds
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +29,43 @@ public class SoundManagerScript : MonoBehaviour
         // Check if there are songs in the playlist
         if (playlist.Count > 0)
         {
-            // Increment the index
-            currentSongIndex = (currentSongIndex + 1) % playlist.Count;
-
-            // Set the next song and play it
-            audioSource.clip = playlist[currentSongIndex];
-            audioSource.Play();
+            StartCoroutine(FadeOutAndIn());
         }
         else
         {
             Debug.LogError("Playlist is empty. Add audio clips to the playlist.");
         }
+    }
+
+    // Coroutine to fade out the current song and fade in the next one
+    private IEnumerator FadeOutAndIn()
+    {
+        float startTime = Time.time;
+
+        // Fade out the current song
+        while (Time.time < startTime + fadeDuration)
+        {
+            audioSource.volume = Mathf.Lerp(1f, 0f, (Time.time - startTime) / fadeDuration);
+            yield return null;
+        }
+
+        // Increment the index
+        currentSongIndex = (currentSongIndex + 1) % playlist.Count;
+
+        // Set the next song
+        audioSource.clip = playlist[currentSongIndex];
+
+        startTime = Time.time;
+
+        // Fade in the next song
+        while (Time.time < startTime + fadeDuration)
+        {
+            audioSource.volume = Mathf.Lerp(0f, 1f, (Time.time - startTime) / fadeDuration);
+            yield return null;
+        }
+
+        // Play the next song
+        audioSource.Play();
     }
 
     // Function to play the "barMusic" audio clip
@@ -50,7 +77,7 @@ public class SoundManagerScript : MonoBehaviour
             audioSource.clip = playlist[currentSongIndex];
             audioSource.Play();
 
-            // Start a coroutine to switch songs every 'switchInterval' seconds
+            // Start a coroutine to switch songs at regular intervals
             StartCoroutine(SwitchSongs());
         }
         else
