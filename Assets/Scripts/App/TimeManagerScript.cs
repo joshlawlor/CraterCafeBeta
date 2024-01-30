@@ -164,8 +164,56 @@ namespace DPUtils.Systems.DateTime
 
             date++;
 
+            if (date % 29 == 0)
+            {
+                AdvanceSeason();
+                date = 1;
+            }
+
+            totalNumDays++;
         }
 
+        private void AdvanceSeason()
+        {
+            if (Season == Season.Winter)
+            {
+                season = Season.Spring;
+                AdvanceYear();
+            }
+            else season++;
+        }
+
+        private void AdvanceYear()
+        {
+            date = 1;
+            year++;
+        }
+
+        #endregion
+
+        #region Bool Checks
+
+        public bool isNight()
+        {
+            return hour > 18 || hour <6;
+        }
+
+        public bool isMorning(){
+            return hour >= 6 && hour <=12;
+        }
+
+        public bool isAfternoon(){
+            return hour > 12 && hour < 18;
+        }
+
+        public bool isWeekend(){
+            return day > Days.Fri ? true : false;
+        }
+
+        public bool IsParticularDay(Days _day)
+        {
+            return day == _day;  
+        }
 
         #endregion
     }
