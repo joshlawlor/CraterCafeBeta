@@ -195,26 +195,50 @@ namespace DPUtils.Systems.DateTime
 
         public bool isNight()
         {
-            return hour > 18 || hour <6;
+            return hour > 18 || hour < 6;
         }
 
-        public bool isMorning(){
-            return hour >= 6 && hour <=12;
+        public bool isMorning()
+        {
+            return hour >= 6 && hour <= 12;
         }
 
-        public bool isAfternoon(){
+        public bool isAfternoon()
+        {
             return hour > 12 && hour < 18;
         }
 
-        public bool isWeekend(){
+        public bool isWeekend()
+        {
             return day > Days.Fri ? true : false;
         }
 
         public bool IsParticularDay(Days _day)
         {
-            return day == _day;  
+            return day == _day;
         }
 
+        #endregion
+
+        #region Key Dates
+        public DateTime NewYearsDay(int year)
+        {
+            if (year == 0) year = 1;
+            return new DateTime(1, 0, year, 6, 0);
+        }
+
+        public DateTime SummerSolstice(int year)
+        {
+            if (year == 0) year = 1;
+            return new DateTime(28, 1, year, 6, 0);
+        }
+
+        public DateTime WinterSolstice(int year)
+        {
+            if (year == 0) year = 1;
+            return new DateTime(28, 3, year, 6, 0);
+
+        }
         #endregion
     }
 
