@@ -14039,8 +14039,8 @@ MonoBehaviour:
   year: 1
   hour: 5
   minutes: 0
-  TickMinutesIncrease: 60
-  TimeBetweenTicks: 0.5
+  TickMinutesIncrease: 10
+  TimeBetweenTicks: 1
 --- !u!1 &1637790931
 GameObject:
   m_ObjectHideFlags: 0
@@ -15004,7 +15004,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 112.2, y: -37.542}
-  m_SizeDelta: {x: 45.9445, y: 7.7827}
+  m_SizeDelta: {x: 36.656, y: 7.7827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954449677
 MonoBehaviour:
@@ -15059,7 +15059,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
