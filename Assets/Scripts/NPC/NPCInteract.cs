@@ -58,7 +58,7 @@ public class NPCInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
+        if (Input.GetKeyDown(KeyCode.T) && playerIsClose)
         {
 
             if (dialoguePanel.activeInHierarchy && orderActive)
@@ -100,8 +100,8 @@ public class NPCInteract : MonoBehaviour
         }
 
 
-        // Check for 'G' key press to give item
-        if (Input.GetKeyDown(KeyCode.G) && playerIsClose && Inventory.Instance.SelectedIndex != -1)
+        // Check for 'E' key press to give item
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && Inventory.Instance.SelectedIndex != -1)
         {
             int selectedIndex = Inventory.Instance.SelectedIndex;
 

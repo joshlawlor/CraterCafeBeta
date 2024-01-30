@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 2664781446176634243}
   - component: {fileID: -3627701466841406013}
   m_Layer: 0
-  m_Name: NPC_B
+  m_Name: NPC_A 1
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,7 +1043,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1297111778, guid: b39ca647004b55745bf9a2acbd8af9c3, type: 3}
+  m_Sprite: {fileID: 1963363364, guid: 4ed4136ef0d182942bc02bdc1b0b2511, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1064,7 +1064,7 @@ Animator:
   m_GameObject: {fileID: 5080033578703293041}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fd38a662f8a3d04aaf1575eab841ead, type: 2}
+  m_Controller: {fileID: 9100000, guid: 076d13dec01da7340a57cd09ea309a09, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   successPopUp: {fileID: 4896294555242221291}
   failPopUp: {fileID: 6217769009204684924}
   dropPopUp: {fileID: 0}
-  orderData: {fileID: 11400000, guid: 06ea9d5c4d41c3644920f3e34febb28c, type: 2}
+  orderData: {fileID: 11400000, guid: d440b472a1424c6488c6be8715bcd746, type: 2}
   npcCollider: {fileID: 2664781446176634243}
   animator: {fileID: 5938453095156615537}
   dialogue: []
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 4235914202865012013}
   doorPoint: {x: -7.5, y: -3.5, z: 0}
-  exitPoint: {x: -13, y: -3.5, z: 0}
+  exitPoint: {x: -10, y: -3.5, z: 0}
   npcCollider: {fileID: 2664781446176634243}
   animator: {fileID: 5938453095156615537}
 --- !u!1 &5392736420460294608
