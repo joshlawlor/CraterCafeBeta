@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 2664781446176634243}
   - component: {fileID: -3627701466841406013}
   m_Layer: 0
-  m_Name: NPC_B
+  m_Name: NPC_B 1
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   successPopUp: {fileID: 4896294555242221291}
   failPopUp: {fileID: 6217769009204684924}
   dropPopUp: {fileID: 0}
-  orderData: {fileID: 11400000, guid: 06ea9d5c4d41c3644920f3e34febb28c, type: 2}
+  orderData: {fileID: 11400000, guid: fcaa39082378c43459e337cede418acd, type: 2}
   npcCollider: {fileID: 2664781446176634243}
   animator: {fileID: 5938453095156615537}
   dialogue: []
