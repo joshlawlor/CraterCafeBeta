@@ -240,6 +240,47 @@ namespace DPUtils.Systems.DateTime
 
         }
         #endregion
+
+        #region To Strings
+
+        public override string ToString()
+        {
+            return $"Date: {DateToString()} Season: {season} Time: {TimeToString()} " +
+            $"\nTotal Days: {totalNumDays} | Total Weeks: {totalNumWeeks}";
+        }
+
+        public string DateToString()
+        {
+            return $"{Day} {Date} {Year.ToString("D2")}";
+        }
+
+        public string TimeToString()
+        {
+            int adjustedHour = 0;
+
+            if (hour == 0)
+            {
+                adjustedHour = 12;
+            }
+            else if (hour == 24)
+            {
+                adjustedHour = 12;
+            }
+            else if (hour >= 13)
+            {
+                adjustedHour = hour - 12;
+            }
+            else
+            {
+                adjustedHour = hour;
+            }
+
+            string AmPm = hour == 0 || hour < 12 ? "AM" : "PM";
+
+            return $"{adjustedHour.ToString("D2")}:{minutes.ToString("D2")} {AmPm}";
+        }
+
+        #endregion
     }
 
     [System.Serializable]
