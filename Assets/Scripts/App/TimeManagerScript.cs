@@ -39,7 +39,7 @@ namespace DPUtils.Systems.DateTime
 
         private void Awake()
         {
-            DateTime = new DateTime(dateInMonth, season - 1, year, hour, minutes * 10);
+            DateTime = new DateTime(dateInMonth, season, year, hour, minutes * 10);
 
             Debug.Log($"Starting Date: {DateTime}");
 
