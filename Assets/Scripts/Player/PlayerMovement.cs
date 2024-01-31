@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
+
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -10,10 +13,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float baseMoveSpeed = 2.5f;
     private float moveSpeed;
-
     private float currentStamina;
     public float maxStamina = 5;
     public float staminaRegenRate = 1.35f;
+    public float runCost = 1;
     private bool isRunning = false;
 
     public float StaminaPercentage
@@ -24,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
+    public Image StaminaBar;
 
     private Vector2 moveDirection;
     private Vector2 lastMoveDirection; // Store the last non-zero movement direction
@@ -37,12 +41,33 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         ProcessInputs();
+        if (currentStamina == maxStamina)
+        {
+            StaminaBar.gameObject.SetActive(false);
+
+        }
+        if (currentStamina < 2.5 && currentStamina > 1.5)
+        {
+            StaminaBar.color = Color.yellow;
+
+        }
+        else if (currentStamina < 1.5)
+        {
+            StaminaBar.color = Color.red;
+
+        }
+        else
+        {
+            StaminaBar.color = Color.green;
+        }
+
     }
 
     void FixedUpdate()
     {
         Move();
         RegenerateStamina();
+        UpdateStaminaBar();
 
     }
 
@@ -53,10 +78,13 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         // Check if the "Shift" key is held down to adjust the movement speed
-        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0 && (moveDirection.x != 0 || moveDirection.y != 0))
         {
             isRunning = true;
-            currentStamina -= Time.deltaTime;  // Consume stamina while running
+            StaminaBar.gameObject.SetActive(true);
+            currentStamina -= runCost * Time.deltaTime;  // Consume stamina while running
+            StaminaBar.fillAmount = currentStamina / maxStamina; // Update stamina bar image width
+
         }
         else
         {
@@ -106,4 +134,12 @@ public class PlayerMovement : MonoBehaviour
             currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         }
     }
+
+    void UpdateStaminaBar()
+    {
+        // Update the mask's size or position based on the stamina percentage
+        float maskWidth = Mathf.Clamp01(currentStamina / maxStamina);
+        StaminaBar.rectTransform.localScale = new Vector3(maskWidth, 1f, 1f);
+    }
+
 }
