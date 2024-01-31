@@ -5,15 +5,18 @@ using TMPro;
 
 public class StatsTracker : MonoBehaviour
 {
-    public TextMeshProUGUI npcCountText; // Reference to the TMP object
+    public TextMeshProUGUI npcCountText;
+    public TextMeshProUGUI totalNPCText;
     public GameObject ClosedDoors;
     public GameObject OpenDoors;
 
-    private int npcCount; // Store the npcCount locally
+    private int npcCount; // Store the active npcCount locally
+    private int totalSpawnedNPCs; // Store the total spawned NPC count
 
     private void Update()
     {
         ActiveNPCTracker();
+        UpdateTotalDisplay();
         if (npcCount == 0)
         {
             Debug.Log("NO ACTIVE NPC");
@@ -27,15 +30,27 @@ public class StatsTracker : MonoBehaviour
         }
     }
 
-    private void UpdateTotalNPC(int npcCount)
+    public void UpdateTotalNPC()
     {
-        this.npcCount = npcCount; // Update the local npcCount
+        totalSpawnedNPCs++;
+        UpdateTotalDisplay();
+    }
+
+    private void UpdateTotalDisplay()
+    {
+        if (totalNPCText != null)
+        {
+            totalNPCText.text = "Customers: " + GetTotalSpawnedNPCs();
+        }
+    }
+
+    private void UpdateTotalActiveNPC(int npcCount)
+    {
+        this.npcCount = npcCount; // Update the active npcCount
         if (npcCountText != null)
         {
             npcCountText.text = "Customers: " + npcCount.ToString();
         }
-
-
     }
 
     public int GetNPCCount()
@@ -43,17 +58,24 @@ public class StatsTracker : MonoBehaviour
         return npcCount; // Return the current npcCount
     }
 
+    public int GetTotalSpawnedNPCs()
+    {
+        return totalSpawnedNPCs; // Return the total spawned NPC count
+    }
+
     private void ActiveNPCTracker()
     {
         // Find all active GameObjects with names starting with 'NPC'
         GameObject[] activeNPCs = GameObject.FindGameObjectsWithTag("NPC");
-        UpdateTotalNPC(activeNPCs.Length);
-        // You can now iterate through the array of active NPCs and perform any desired actions
-        foreach (GameObject npc in activeNPCs)
+        int currentNPCCount = activeNPCs.Length;
+
+        // Check if the npcCount has changed
+        if (currentNPCCount != npcCount)
         {
-            // Example: Output the names of active NPCs
-            Debug.Log("Active NPC: " + npc.name);
+            UpdateTotalNPC();
         }
+
+        // Update the active NPC count
+        UpdateTotalActiveNPC(currentNPCCount);
     }
 }
-

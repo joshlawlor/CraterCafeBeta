@@ -11,6 +11,9 @@ namespace DPUtils.Systems.DateTime
 
     public class TimeManagerScript : MonoBehaviour
     {
+        public DateTime CurrentDateTime { get { return DateTime; } } //Defines current date time to be used in other scripts
+        public TimeInfo CurrentTimeInfo { get { return new TimeInfo(DateTime.Hour, DateTime.IsAM, DateTime.Minutes); } }
+
         [Header("Date & Time Settings")]
         [Range(1, 28)]
         public int dateInMonth;
@@ -74,6 +77,22 @@ namespace DPUtils.Systems.DateTime
         }
     }
 
+
+    [System.Serializable]
+    public struct TimeInfo
+    {
+        public int Hour { get; private set; }
+        public int Minutes { get; private set; }
+        public bool IsAM { get; private set; }
+
+        public TimeInfo(int hour, bool isAM, int minutes)
+        {
+            Hour = hour;
+            IsAM = isAM;
+            Minutes = minutes;
+        }
+    }
+
     [System.Serializable]
     public struct DateTime
     {
@@ -84,6 +103,7 @@ namespace DPUtils.Systems.DateTime
 
         private int hour;
         private int minutes;
+        public bool IsAM => hour >= 0 && hour < 12;
 
         private Season season;
 
@@ -304,6 +324,7 @@ namespace DPUtils.Systems.DateTime
         Autumn = 2,
         Winter = 3
     }
+
 
 
 
