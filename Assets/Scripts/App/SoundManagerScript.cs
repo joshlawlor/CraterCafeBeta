@@ -45,7 +45,7 @@ public class SoundManagerScript : MonoBehaviour
         // Fade out the current song
         while (Time.time < startTime + fadeDuration)
         {
-            audioSource.volume = Mathf.Lerp(1f, 0f, (Time.time - startTime) / fadeDuration);
+            audioSource.volume = Mathf.Lerp(0.7f, 0f, (Time.time - startTime) / fadeDuration);
             yield return null;
         }
 
@@ -62,7 +62,7 @@ public class SoundManagerScript : MonoBehaviour
         // Fade in the next song
         while (Time.time < startTime + fadeDuration)
         {
-            audioSource.volume = Mathf.Lerp(0f, 1f, (Time.time - startTime) / fadeDuration);
+            audioSource.volume = Mathf.Lerp(0f, 0.7f, (Time.time - startTime) / fadeDuration);
             yield return null;
         }
 

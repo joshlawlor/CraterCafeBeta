@@ -1702,63 +1702,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 950083027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &146916653
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.08417558
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795802393208735850, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080033578703293041, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
-      propertyPath: m_Name
-      value: NPC_A
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bd81dea9dae4de54aabd76cf5d60b44f, type: 3}
 --- !u!1 &166788321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,6 +3725,12 @@ MonoBehaviour:
   - {fileID: 5080033578703293041, guid: 2095e268f3c0cc743bd59fc771672124, type: 3}
   - {fileID: 5080033578703293041, guid: eb4a94c7491074441ada7b3cee9c55fd, type: 3}
   - {fileID: 5080033578703293041, guid: 576618158249f3843a37e6c66683f533, type: 3}
+  - {fileID: 5080033578703293041, guid: 89e4c746e1a50584988b16e47bae81d6, type: 3}
+  - {fileID: 5080033578703293041, guid: 0ad0c24d11ae2704aada87447b03cd6d, type: 3}
+  - {fileID: 5080033578703293041, guid: 438a3cae1e569c947b83672ccfc398b0, type: 3}
+  - {fileID: 5080033578703293041, guid: b62ec45b92ebb1346a77a82bd7b07de7, type: 3}
+  - {fileID: 5080033578703293041, guid: 9e81a3ce0f624e147ac4f5de908433eb, type: 3}
+  - {fileID: 5080033578703293041, guid: b3d253bf72105b9498c0b5a6e839bcbf, type: 3}
   spawnIntervalMin: 3
   spawnIntervalMax: 6
   maxNPCs: 150
@@ -14175,7 +14124,7 @@ MonoBehaviour:
   hour: 5
   minutes: 0
   TickMinutesIncrease: 10
-  TimeBetweenTicks: 1
+  TimeBetweenTicks: 1.5
 --- !u!1 &1637790931
 GameObject:
   m_ObjectHideFlags: 0
@@ -15367,7 +15316,7 @@ RectTransform:
   m_GameObject: {fileID: 1962922950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0063130185, y: 0.010134567, z: 0.48735}
+  m_LocalScale: {x: 0.005918455, y: 0.010134567, z: 0.48735}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 166788322}
@@ -16032,7 +15981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -328.4, y: 185.9}
+  m_AnchoredPosition: {x: -328.4, y: 179}
   m_SizeDelta: {x: -439.06006, y: -222.83142}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060596926
@@ -16470,4 +16419,3 @@ SceneRoots:
   - {fileID: 546588273}
   - {fileID: 1387721081}
   - {fileID: 1631962983}
-  - {fileID: 146916653}
