@@ -63,7 +63,9 @@ public class NPCMovement : MonoBehaviour
                 if (waypointIndex == waypoints.Length)
                 {
                     // Trigger the animator to set Order to true
+                    npcInteract.setOrderActive();
                     npcInteract.EnableOrderPopUp();
+
                     npcCollider.enabled = true;
 
                 }

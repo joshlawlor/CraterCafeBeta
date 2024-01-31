@@ -38,12 +38,17 @@ public class NPCInteract : MonoBehaviour
     private int index;
     public float wordSpeed;
     public bool playerIsClose;
-    private bool orderActive = true;
+    private bool orderActive = false;
     public float exitTimerDuration = 30f; // Duration of the exit timer in seconds
     public Vector3 exitPoint; // The position where the NPC will move after the timer
     public Vector3 doorPoint;
     private bool exitTimerActive = false; // Flag to check if the exit timer is active
     private AIPath aiPath;
+
+    public void setOrderActive()
+    {
+        orderActive = true;
+    }
 
     private void Start()
     {
