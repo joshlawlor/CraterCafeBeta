@@ -5,7 +5,7 @@ using UnityEngine;
 public class InGameMenuScript : MonoBehaviour
 {
     public GameObject gameMenu;
-    public GameObject hotbarMenu;
+    // public GameObject hotbarMenu;
 
 
     public void OnButtonClick()
@@ -21,11 +21,11 @@ public class InGameMenuScript : MonoBehaviour
         }
     }
 
-     public void ToggleHotbarMenu()
-    {
-        if (hotbarMenu  != null)
-        {
-            hotbarMenu.SetActive(!hotbarMenu.activeSelf);
-        }
-    }
+    //  public void ToggleHotbarMenu()
+    // {
+    //     if (hotbarMenu  != null)
+    //     {
+    //         hotbarMenu.SetActive(!hotbarMenu.activeSelf);
+    //     }
+    // }
 }
