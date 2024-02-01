@@ -14,6 +14,9 @@ namespace DPUtils.Systems.DateTime
         public DateTime CurrentDateTime { get { return DateTime; } } //Defines current date time to be used in other scripts
         public TimeInfo CurrentTimeInfo { get { return new TimeInfo(DateTime.Hour, DateTime.IsAM, DateTime.Minutes); } }
 
+        private bool isGamePaused = false;
+
+
         [Header("Date & Time Settings")]
         [Range(1, 28)]
         public int dateInMonth;
@@ -66,8 +69,11 @@ namespace DPUtils.Systems.DateTime
 
         void Tick()
         {
-            AdvanceTime();
-
+            // Check if the game is not paused
+            if (!isGamePaused)
+            {
+                AdvanceTime();
+            }
         }
 
         void AdvanceTime()
@@ -75,7 +81,21 @@ namespace DPUtils.Systems.DateTime
             DateTime.AdvanceMinutes(TickMinutesIncrease);
             OnDateTimeChanged?.Invoke(DateTime);
         }
+        public void PauseDateTime()
+        {
+            // Set the isGamePaused flag to true when pausing the game
+            isGamePaused = true;
+        }
+
+        public void ResumeDateTime()
+        {
+            // Set the isGamePaused flag to false when resuming the game
+            isGamePaused = false;
+        }
+
     }
+
+
 
 
     [System.Serializable]
