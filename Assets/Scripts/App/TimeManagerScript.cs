@@ -93,6 +93,21 @@ namespace DPUtils.Systems.DateTime
             isGamePaused = false;
         }
 
+        public void SetDateTime(CurrentDateTimeInfo currentDateTimeInfo)
+        {
+            // Set internal DateTime based on the provided CurrentDateTimeInfo
+            DateTime = new DateTime(
+                currentDateTimeInfo.Date,
+                (int)currentDateTimeInfo.Season,
+                currentDateTimeInfo.Year,
+                currentDateTimeInfo.Hour,
+                currentDateTimeInfo.Minutes
+            );
+
+            // Log the updated DateTime
+            Debug.Log($"DateTime set: {DateTime}");
+        }
+
     }
 
 
@@ -124,8 +139,8 @@ namespace DPUtils.Systems.DateTime
         public int Year { get; private set; }
         public Season Season { get; private set; }
 
-        public int TotalNumDays { get; private set;}
-        public int TotalNumWeeks {get; private set;}
+        public int TotalNumDays { get; private set; }
+        public int TotalNumWeeks { get; private set; }
 
         public CurrentDateTimeInfo(int hour, int minutes, bool isAM, int day, int date, int year, Season season, int totalNumDays, int totalNumWeeks)
         {

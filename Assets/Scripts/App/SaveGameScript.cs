@@ -95,7 +95,7 @@ namespace SaveGameSettings
             if (loadedData != null)
             {
                 // Need to use the loaded data here. For example:
-                // timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
+                timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
                 // bankScoreController.SetBankScore(loadedData.PlayerBankScore);
                 // statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
 
