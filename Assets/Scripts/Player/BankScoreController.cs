@@ -5,7 +5,7 @@ using TMPro;
 
 public class BankScoreController : MonoBehaviour
 {
-    public TextMeshProUGUI  bankScoreText;
+    public TextMeshProUGUI bankScoreText;
 
     private int bankScore = 0;
 
@@ -26,6 +26,10 @@ public class BankScoreController : MonoBehaviour
         {
             bankScoreText.text = "$ " + bankScore;
         }
+    }
+    public int GetBankScore()
+    {
+        return bankScore;
     }
 
 }
