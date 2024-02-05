@@ -24,7 +24,7 @@ namespace SaveGameSettings
 
         public override string ToString()
         {
-            return $"CurrentDateTimeInfo: Hour - {CurrentDateTimeInfo.Hour}, IsAM - {CurrentDateTimeInfo.IsAM}, Minutes - {CurrentDateTimeInfo.Minutes}\nPlayerBankScore: {PlayerBankScore}\nTotalCustomers: {TotalCustomers}";
+            return $"CurrentDateTimeInfo: Hour - {CurrentDateTimeInfo.Hour}, IsAM - {CurrentDateTimeInfo.IsAM}, Minutes - {CurrentDateTimeInfo.Minutes}, Year - {CurrentDateTimeInfo.Year}, Season - {CurrentDateTimeInfo.Season}, Total Weeks - {CurrentDateTimeInfo.TotalNumWeeks}, Total Days - {CurrentDateTimeInfo.TotalNumDays }\nPlayerBankScore: {PlayerBankScore}\nTotalCustomers: {TotalCustomers}";
         }
         public void SaveToFile(string filePath)
         {
@@ -72,7 +72,7 @@ namespace SaveGameSettings
                 Debug.LogError("One or more references in SaveGameScript are null.");
                 return;
             }
-            string saveFilePath = "Assets/SaveFiles/saveData.dat"; // Use .dat or another binary extension
+            string saveFilePath = "Assets/SaveFiles/saveData.dat";
 
             CurrentDateTimeInfo currentDateTimeInfo = timeManager.CurrentDateTimeInfo;
             int playerBankScore = bankScoreController.GetBankScore();
@@ -84,6 +84,23 @@ namespace SaveGameSettings
             saveData.SaveToFile(saveFilePath);
 
             Debug.Log($"Game saved!\n{saveData}");
+        }
+
+         public void LoadGame()
+        {
+            string loadFilePath = "Assets/SaveFiles/saveData.dat"; 
+
+            SaveData loadedData = SaveData.LoadFromFile(loadFilePath);
+
+            if (loadedData != null)
+            {
+                // Need to use the loaded data here. For example:
+                // timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
+                // bankScoreController.SetBankScore(loadedData.PlayerBankScore);
+                // statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+
+                Debug.Log($"Game loaded!\n{loadedData}");
+            }
         }
     }
 }

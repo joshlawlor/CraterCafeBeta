@@ -11,7 +11,7 @@ namespace DPUtils.Systems.DateTime
 
     public class TimeManagerScript : MonoBehaviour
     {
-        public CurrentDateTimeInfo CurrentDateTimeInfo { get { return new CurrentDateTimeInfo(DateTime.Hour, DateTime.Minutes, DateTime.IsAM, (int)DateTime.Day, DateTime.Date, DateTime.Year, DateTime.Season); } }
+        public CurrentDateTimeInfo CurrentDateTimeInfo { get { return new CurrentDateTimeInfo(DateTime.Hour, DateTime.Minutes, DateTime.IsAM, (int)DateTime.Day, DateTime.Date, DateTime.Year, DateTime.Season, DateTime.TotalNumDays, DateTime.TotalNumWeeks); } }
         public TimeInfo CurrentTimeInfo { get { return new TimeInfo(DateTime.Hour, DateTime.IsAM, DateTime.Minutes); } }
 
         private bool isGamePaused = false;
@@ -124,7 +124,10 @@ namespace DPUtils.Systems.DateTime
         public int Year { get; private set; }
         public Season Season { get; private set; }
 
-        public CurrentDateTimeInfo(int hour, int minutes, bool isAM, int day, int date, int year, Season season)
+        public int TotalNumDays { get; private set;}
+        public int TotalNumWeeks {get; private set;}
+
+        public CurrentDateTimeInfo(int hour, int minutes, bool isAM, int day, int date, int year, Season season, int totalNumDays, int totalNumWeeks)
         {
             Hour = hour;
             Minutes = minutes;
@@ -133,6 +136,8 @@ namespace DPUtils.Systems.DateTime
             Date = date;
             Year = year;
             Season = season;
+            TotalNumDays = totalNumDays;
+            TotalNumWeeks = totalNumWeeks;
         }
     }
     [System.Serializable]
