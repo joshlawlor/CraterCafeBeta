@@ -22,6 +22,10 @@ namespace SaveGameSettings
             TotalCustomers = totalCustomers;
         }
 
+        public override string ToString()
+        {
+            return $"CurrentDateTimeInfo: Hour - {CurrentDateTimeInfo.Hour}, IsAM - {CurrentDateTimeInfo.IsAM}, Minutes - {CurrentDateTimeInfo.Minutes}\nPlayerBankScore: {PlayerBankScore}\nTotalCustomers: {TotalCustomers}";
+        }
         public void SaveToFile(string filePath)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -75,11 +79,11 @@ namespace SaveGameSettings
             int totalCustomers = statsTracker.GetTotalSpawnedNPCs();
 
             SaveData saveData = new SaveData(currentDateTimeInfo, playerBankScore, totalCustomers);
-            
+
             // Save using binary serialization
             saveData.SaveToFile(saveFilePath);
 
-            Debug.Log("Game saved!  " + saveData.CurrentDateTimeInfo.Hour);
+            Debug.Log($"Game saved!\n{saveData}");
         }
     }
 }
