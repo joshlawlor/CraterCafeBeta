@@ -13849,6 +13849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomNPCSpawning: {fileID: 546588272}
+  saveGameScript: {fileID: 1566010033}
   BarStatus: {fileID: 1954449677}
 --- !u!4 &1566010031
 Transform:
