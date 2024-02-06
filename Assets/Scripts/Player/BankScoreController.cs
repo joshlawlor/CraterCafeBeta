@@ -9,7 +9,7 @@ public class BankScoreController : MonoBehaviour
 
     private int bankScore = 0;
 
-    private void Start()
+    private void FixedUpdate()
     {
         UpdateBankScoreUI();
     }
@@ -32,4 +32,8 @@ public class BankScoreController : MonoBehaviour
         return bankScore;
     }
 
+    public void SetBankScore(int newBankScore)
+    {
+        bankScore = newBankScore;
+    }
 }
