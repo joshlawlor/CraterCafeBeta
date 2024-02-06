@@ -1511,7 +1511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &54731806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14947,7 +14947,7 @@ MonoBehaviour:
   hour: 6
   minutes: 0
   TickMinutesIncrease: 10
-  TimeBetweenTicks: 2
+  TimeBetweenTicks: 1
 --- !u!1 &1637790931
 GameObject:
   m_ObjectHideFlags: 0
