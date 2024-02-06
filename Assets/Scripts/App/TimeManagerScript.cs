@@ -11,7 +11,7 @@ namespace DPUtils.Systems.DateTime
 
     public class TimeManagerScript : MonoBehaviour
     {
-        public DateTime CurrentDateTime { get { return DateTime; } } //Defines current date time to be used in other scripts
+        public CurrentDateTimeInfo CurrentDateTimeInfo { get { return new CurrentDateTimeInfo(DateTime.Hour, DateTime.Minutes, DateTime.IsAM, (int)DateTime.Day, DateTime.Date, DateTime.Year, DateTime.Season, DateTime.TotalNumDays, DateTime.TotalNumWeeks); } }
         public TimeInfo CurrentTimeInfo { get { return new TimeInfo(DateTime.Hour, DateTime.IsAM, DateTime.Minutes); } }
 
         private bool isGamePaused = false;
@@ -93,6 +93,21 @@ namespace DPUtils.Systems.DateTime
             isGamePaused = false;
         }
 
+        public void SetDateTime(CurrentDateTimeInfo currentDateTimeInfo)
+        {
+            // Set internal DateTime based on the provided CurrentDateTimeInfo
+            DateTime = new DateTime(
+                currentDateTimeInfo.Date,
+                (int)currentDateTimeInfo.Season,
+                currentDateTimeInfo.Year,
+                currentDateTimeInfo.Hour,
+                currentDateTimeInfo.Minutes
+            );
+
+            // Log the updated DateTime
+            // Debug.Log($"DateTime set: {DateTime}");
+        }
+
     }
 
 
@@ -113,6 +128,33 @@ namespace DPUtils.Systems.DateTime
         }
     }
 
+    [Serializable]
+    public struct CurrentDateTimeInfo
+    {
+        public int Hour { get; private set; }
+        public int Minutes { get; private set; }
+        public bool IsAM { get; private set; }
+        public int Day { get; private set; }
+        public int Date { get; private set; }
+        public int Year { get; private set; }
+        public Season Season { get; private set; }
+
+        public int TotalNumDays { get; private set; }
+        public int TotalNumWeeks { get; private set; }
+
+        public CurrentDateTimeInfo(int hour, int minutes, bool isAM, int day, int date, int year, Season season, int totalNumDays, int totalNumWeeks)
+        {
+            Hour = hour;
+            Minutes = minutes;
+            IsAM = isAM;
+            Day = day;
+            Date = date;
+            Year = year;
+            Season = season;
+            TotalNumDays = totalNumDays;
+            TotalNumWeeks = totalNumWeeks;
+        }
+    }
     [System.Serializable]
     public struct DateTime
     {
