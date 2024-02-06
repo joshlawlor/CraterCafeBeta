@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DPUtils.Systems.SaveSystem;
@@ -8,6 +9,25 @@ using DPUtils.Systems.SaveSystem;
 public class MainMenuScript : MonoBehaviour
 {
     public SaveGameScript saveGameScript;
+
+    public GameObject PlayButton;
+    public GameObject ContinueButton;
+
+
+    void Update()
+    {
+        string saveFilePath = "Assets/SaveFiles/saveData.dat";
+
+        if (File.Exists(saveFilePath))
+        {
+            ContinueButton.SetActive(true);
+            PlayButton.SetActive(false);
+        }
+        else{
+            ContinueButton.SetActive(false);
+            PlayButton.SetActive(true);
+        }
+    }
 
     public void PlayGame()
     {
