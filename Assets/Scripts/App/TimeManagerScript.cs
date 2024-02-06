@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DPUtils.Systems.SaveSystem;
 
 
 namespace DPUtils.Systems.DateTime
@@ -45,12 +47,30 @@ namespace DPUtils.Systems.DateTime
 
         private void Awake()
         {
+            string saveFilePath = "Assets/SaveFiles/saveData.dat";
+
+            if (File.Exists(saveFilePath))
+            {
+                SaveData loadedData = SaveData.LoadFromFile(saveFilePath);
+                if (loadedData != null)
+                {
+                    DateTime = new DateTime(
+                        loadedData.CurrentDateTimeInfo.Date,
+                        (int)loadedData.CurrentDateTimeInfo.Season,
+                        loadedData.CurrentDateTimeInfo.Year,
+                        loadedData.CurrentDateTimeInfo.Hour,
+                        loadedData.CurrentDateTimeInfo.Minutes
+                    );
+
+                    Debug.Log("Loaded DateTime from save file.");
+                    return;
+                }
+            }
+
+            // If no save file found or failed to load, create a new DateTime
             DateTime = new DateTime(dateInMonth, season, year, hour, minutes * 10);
-
-            Debug.Log($"Starting Date: {DateTime}");
-
+            Debug.Log("Created new DateTime.");
         }
-
         private void Start()
         {
             OnDateTimeChanged?.Invoke(DateTime);

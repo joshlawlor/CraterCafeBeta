@@ -25,7 +25,7 @@ public class GameEventsController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (!isGamePaused)
         {
@@ -46,12 +46,12 @@ public class GameEventsController : MonoBehaviour
     // Check time conditions and handle NPC spawning/stopping
     void CheckTimeConditions(int currentHour, int currentMinutes, bool isAM)
     {
-        if (isAM && currentHour == 7 && currentMinutes == 0 && !isSpawningActive)
+        if (isAM && currentHour >= 7 && currentMinutes == 0 && !isSpawningActive)
         {
             // Start spawning if it's morning and spawning is not already active
             StartSpawning();
         }
-        else if (!isAM && currentHour == 23 && currentMinutes == 0 && isSpawningActive)
+        else if (!isAM && currentHour >= 17 && currentMinutes == 0 && isSpawningActive)
         {
             // Stop spawning if it's 4 PM and spawning is currently active
             StopSpawning();
@@ -92,11 +92,11 @@ public class GameEventsController : MonoBehaviour
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     public void PauseGame()
