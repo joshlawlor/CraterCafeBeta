@@ -20,7 +20,8 @@ public class StatsTracker : MonoBehaviour
         if (npcCount == 0)
         {
             Debug.Log("NO ACTIVE NPC");
-            OpenDoors.SetActive(false);
+            if (OpenDoors != null && ClosedDoors != null)
+                OpenDoors.SetActive(false);
             ClosedDoors.SetActive(true);
         }
         else
@@ -40,7 +41,7 @@ public class StatsTracker : MonoBehaviour
     {
         if (totalNPCText != null)
         {
-            totalNPCText.text = "Customers: " + GetTotalSpawnedNPCs();
+            totalNPCText.text = "Total Customers: " + GetTotalSpawnedNPCs();
         }
     }
 
@@ -49,7 +50,7 @@ public class StatsTracker : MonoBehaviour
         this.npcCount = npcCount; // Update the active npcCount
         if (npcCountText != null)
         {
-            npcCountText.text = "Customers: " + npcCount.ToString();
+            npcCountText.text = "Active Customers: " + npcCount.ToString();
         }
     }
 
@@ -61,6 +62,11 @@ public class StatsTracker : MonoBehaviour
     public int GetTotalSpawnedNPCs()
     {
         return totalSpawnedNPCs; // Return the total spawned NPC count
+    }
+
+    public void SetTotalSpawnedNPCs(int npcCount)
+    {   
+        totalSpawnedNPCs = npcCount;
     }
 
     private void ActiveNPCTracker()

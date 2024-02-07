@@ -16,14 +16,15 @@ public class MainMenuScript : MonoBehaviour
 
     void Update()
     {
-        string saveFilePath = "Assets/SaveFiles/saveData.dat";
-
+        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
+        Debug.Log(Application.persistentDataPath);
         if (File.Exists(saveFilePath))
         {
             ContinueButton.SetActive(true);
             PlayButton.SetActive(false);
         }
-        else{
+        else
+        {
             ContinueButton.SetActive(false);
             PlayButton.SetActive(true);
         }

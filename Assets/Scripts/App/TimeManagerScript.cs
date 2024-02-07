@@ -47,7 +47,7 @@ namespace DPUtils.Systems.DateTime
 
         private void Awake()
         {
-            string saveFilePath = "Assets/SaveFiles/saveData.dat";
+            string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             if (File.Exists(saveFilePath))
             {

@@ -73,7 +73,7 @@ namespace DPUtils.Systems.SaveSystem
                 Debug.LogError("One or more references in SaveGameScript are null.");
                 return;
             }
-            string saveFilePath = "Assets/SaveFiles/saveData.dat";
+        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             CurrentDateTimeInfo currentDateTimeInfo = timeManager.CurrentDateTimeInfo;
             int playerBankScore = bankScoreController.GetBankScore();
@@ -89,7 +89,7 @@ namespace DPUtils.Systems.SaveSystem
 
         public void LoadGame()
         {
-            string loadFilePath = "Assets/SaveFiles/saveData.dat";
+            string loadFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             SaveData loadedData = SaveData.LoadFromFile(loadFilePath);
 
@@ -98,7 +98,7 @@ namespace DPUtils.Systems.SaveSystem
                 // Need to use the loaded data here. For example:
                 timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
                 bankScoreController.SetBankScore(loadedData.PlayerBankScore);
-                // statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+                statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
 
 
                 Debug.Log($"Game loaded!\n{loadedData}");
@@ -107,7 +107,7 @@ namespace DPUtils.Systems.SaveSystem
 
         public void ContinueGame()
         {
-            string loadFilePath = "Assets/SaveFiles/saveData.dat";
+            string loadFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             SaveData loadedData = SaveData.LoadFromFile(loadFilePath);
 
@@ -117,7 +117,7 @@ namespace DPUtils.Systems.SaveSystem
                 // Use the loaded data
                 timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
                 bankScoreController.SetBankScore(loadedData.PlayerBankScore);
-                // statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+                statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
 
                 Debug.Log($"Game loaded!\n{loadedData}");
 

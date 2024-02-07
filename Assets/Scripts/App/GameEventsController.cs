@@ -19,7 +19,7 @@ public class GameEventsController : MonoBehaviour
 
     private void Start()
     {
-        string saveFilePath = "Assets/SaveFiles/saveData.dat";
+        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
         if (File.Exists(saveFilePath))
         {
