@@ -35,5 +35,6 @@ public class BankScoreController : MonoBehaviour
     public void SetBankScore(int newBankScore)
     {
         bankScore = newBankScore;
+        UpdateBankScoreUI();
     }
 }

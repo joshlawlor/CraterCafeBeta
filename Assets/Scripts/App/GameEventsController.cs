@@ -1,11 +1,15 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using DPUtils.Systems.DateTime;
+using DPUtils.Systems.SaveSystem;
 using TMPro;
 
 public class GameEventsController : MonoBehaviour
 {
     public RandomNPCSpawner randomNPCSpawning;
+    public SaveGameScript saveGameScript;
+
     public TextMeshProUGUI BarStatus; // Reference to the TMP object
     private bool isSpawningActive = false;
 
@@ -15,6 +19,12 @@ public class GameEventsController : MonoBehaviour
 
     private void Start()
     {
+        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
+
+        if (File.Exists(saveFilePath))
+        {
+            saveGameScript.LoadGame();
+        }
         // Find the TimeManagerScript in the scene
         timeManager = FindObjectOfType<TimeManagerScript>();
 
@@ -25,7 +35,7 @@ public class GameEventsController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (!isGamePaused)
         {
@@ -36,7 +46,7 @@ public class GameEventsController : MonoBehaviour
             Debug.Log($"Current hour: {currentTimeInfo.Hour}, AM: {currentTimeInfo.IsAM}");
 
             // Check for the specific time conditions
-            CheckTimeConditions(currentTimeInfo.Hour, currentTimeInfo.Minutes, currentTimeInfo.IsAM);
+            CheckTimeConditions(currentTimeInfo.Hour);
 
             // Update the bar status
             UpdateBarStatus(isSpawningActive);
@@ -44,16 +54,15 @@ public class GameEventsController : MonoBehaviour
     }
 
     // Check time conditions and handle NPC spawning/stopping
-    void CheckTimeConditions(int currentHour, int currentMinutes, bool isAM)
+    void CheckTimeConditions(int currentHour)
     {
-        if (isAM && currentHour == 7 && currentMinutes == 0 && !isSpawningActive)
+        if (currentHour >= 7 && currentHour < 17 && !isSpawningActive)
         {
             // Start spawning if it's morning and spawning is not already active
             StartSpawning();
         }
-        else if (!isAM && currentHour == 23 && currentMinutes == 0 && isSpawningActive)
+        else if(currentHour > 17 && isSpawningActive)
         {
-            // Stop spawning if it's 4 PM and spawning is currently active
             StopSpawning();
         }
     }
@@ -92,11 +101,11 @@ public class GameEventsController : MonoBehaviour
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     public void PauseGame()

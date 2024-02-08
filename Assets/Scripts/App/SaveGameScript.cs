@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 using DPUtils.Systems.DateTime;
@@ -6,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 
-namespace SaveGameSettings
+namespace DPUtils.Systems.SaveSystem
 {
     [Serializable]
     public class SaveData
@@ -24,7 +25,7 @@ namespace SaveGameSettings
 
         public override string ToString()
         {
-            return $"CurrentDateTimeInfo: Hour - {CurrentDateTimeInfo.Hour}, IsAM - {CurrentDateTimeInfo.IsAM}, Minutes - {CurrentDateTimeInfo.Minutes}, Year - {CurrentDateTimeInfo.Year}, Season - {CurrentDateTimeInfo.Season}, Total Weeks - {CurrentDateTimeInfo.TotalNumWeeks}, Total Days - {CurrentDateTimeInfo.TotalNumDays }\nPlayerBankScore: {PlayerBankScore}\nTotalCustomers: {TotalCustomers}";
+            return $"CurrentDateTimeInfo: Hour - {CurrentDateTimeInfo.Hour}, IsAM - {CurrentDateTimeInfo.IsAM}, Minutes - {CurrentDateTimeInfo.Minutes}, Year - {CurrentDateTimeInfo.Year}, Season - {CurrentDateTimeInfo.Season}, Total Weeks - {CurrentDateTimeInfo.TotalNumWeeks}, Total Days - {CurrentDateTimeInfo.TotalNumDays}\nPlayerBankScore: {PlayerBankScore}\nTotalCustomers: {TotalCustomers}";
         }
         public void SaveToFile(string filePath)
         {
@@ -72,7 +73,7 @@ namespace SaveGameSettings
                 Debug.LogError("One or more references in SaveGameScript are null.");
                 return;
             }
-            string saveFilePath = "Assets/SaveFiles/saveData.dat";
+        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             CurrentDateTimeInfo currentDateTimeInfo = timeManager.CurrentDateTimeInfo;
             int playerBankScore = bankScoreController.GetBankScore();
@@ -86,9 +87,9 @@ namespace SaveGameSettings
             Debug.Log($"Game saved!\n{saveData}");
         }
 
-         public void LoadGame()
+        public void LoadGame()
         {
-            string loadFilePath = "Assets/SaveFiles/saveData.dat"; 
+            string loadFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             SaveData loadedData = SaveData.LoadFromFile(loadFilePath);
 
@@ -97,10 +98,38 @@ namespace SaveGameSettings
                 // Need to use the loaded data here. For example:
                 timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
                 bankScoreController.SetBankScore(loadedData.PlayerBankScore);
-                // statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+                statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+
 
                 Debug.Log($"Game loaded!\n{loadedData}");
             }
+        }
+
+        public void ContinueGame()
+        {
+            string loadFilePath = Application.persistentDataPath + "/savedGameFile.dat";
+
+            SaveData loadedData = SaveData.LoadFromFile(loadFilePath);
+
+            if (loadedData != null)
+            {
+                TransitionToNextScene();
+                // Use the loaded data
+                timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
+                bankScoreController.SetBankScore(loadedData.PlayerBankScore);
+                statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
+
+                Debug.Log($"Game loaded!\n{loadedData}");
+
+                // Transition to the next scene
+                
+            }
+        }
+        private void TransitionToNextScene()
+        {
+            // Load the next scene by its build index
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            
         }
     }
 }
