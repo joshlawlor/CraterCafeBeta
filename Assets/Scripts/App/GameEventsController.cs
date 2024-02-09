@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine;
 using DPUtils.Systems.DateTime;
@@ -117,6 +118,12 @@ public class GameEventsController : MonoBehaviour
 #else
             Application.Quit();
 #endif
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+
     }
 
     public void PauseGame()
