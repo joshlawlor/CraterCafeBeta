@@ -14930,7 +14930,7 @@ MonoBehaviour:
   hour: 6
   minutes: 0
   TickMinutesIncrease: 10
-  TimeBetweenTicks: 0.2
+  TimeBetweenTicks: 2
 --- !u!1 &1637790931
 GameObject:
   m_ObjectHideFlags: 0

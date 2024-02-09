@@ -121,8 +121,6 @@ namespace DPUtils.Systems.SaveSystem
 
                 Debug.Log($"Game loaded!\n{loadedData}");
 
-                // Transition to the next scene
-
             }
         }
 
@@ -141,8 +139,6 @@ namespace DPUtils.Systems.SaveSystem
             {
                 Debug.Log("No save file found to delete.");
             }
-
-            // Transition to the next scene
             TransitionToNextScene();
         }
         private void TransitionToNextScene()

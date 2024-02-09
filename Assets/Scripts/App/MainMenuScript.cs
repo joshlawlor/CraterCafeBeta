@@ -10,7 +10,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public SaveGameScript saveGameScript;
 
-    public GameObject PlayButton;
+    public GameObject NewGameButton;
     public GameObject ContinueButton;
 
 
@@ -21,12 +21,12 @@ public class MainMenuScript : MonoBehaviour
         if (File.Exists(saveFilePath))
         {
             ContinueButton.SetActive(true);
-            PlayButton.SetActive(false);
+            NewGameButton.SetActive(false);
         }
         else
         {
             ContinueButton.SetActive(false);
-            PlayButton.SetActive(true);
+            NewGameButton.SetActive(true);
         }
     }
 
