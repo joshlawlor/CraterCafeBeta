@@ -10,7 +10,7 @@ public class ClockManagerScript : MonoBehaviour
     public RectTransform ClockFace;
 
     private float startingRotation;
-    public TextMeshProUGUI Date, Time, Season, Week;
+    public TextMeshProUGUI Date, Time, Season, Week, TotalDays;
 
     public void Awake()
     {
@@ -34,6 +34,8 @@ public class ClockManagerScript : MonoBehaviour
         Time.text = dateTime.TimeToString();
         Season.text = dateTime.Season.ToString();
         Week.text = $"WEEK: {dateTime.CurrentWeek.ToString()}";
+        TotalDays.text = $"DAY: {dateTime.TotalNumDays.ToString()}";
+
 
         float t = (float)dateTime.Hour / 24f;
 
