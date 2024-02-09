@@ -35,7 +35,7 @@ public class GameEventsController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    public void FixedUpdate()
     {
         if (!isGamePaused)
         {
@@ -47,6 +47,8 @@ public class GameEventsController : MonoBehaviour
 
             // Check for the specific time conditions
             CheckTimeConditions(currentTimeInfo.Hour);
+
+            AutoSaveDaily(currentTimeInfo.Hour, currentTimeInfo.Minutes);
 
             // Update the bar status
             UpdateBarStatus(isSpawningActive);
@@ -61,9 +63,18 @@ public class GameEventsController : MonoBehaviour
             // Start spawning if it's morning and spawning is not already active
             StartSpawning();
         }
-        else if(currentHour > 17 && isSpawningActive)
+        else if (currentHour > 17 && isSpawningActive)
         {
             StopSpawning();
+        }
+    }
+
+    void AutoSaveDaily(int currentHour, int currentMinutes)
+    {
+        if (currentHour == 23 && currentMinutes == 00)
+        {
+            saveGameScript.SaveGame();
+            Debug.Log("Daily auto-save completed");
         }
     }
 
