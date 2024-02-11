@@ -73,7 +73,7 @@ namespace DPUtils.Systems.SaveSystem
                 Debug.LogError("One or more references in SaveGameScript are null.");
                 return;
             }
-        string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
+            string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
 
             CurrentDateTimeInfo currentDateTimeInfo = timeManager.CurrentDateTimeInfo;
             int playerBankScore = bankScoreController.GetBankScore();
@@ -121,15 +121,31 @@ namespace DPUtils.Systems.SaveSystem
 
                 Debug.Log($"Game loaded!\n{loadedData}");
 
-                // Transition to the next scene
-                
             }
+        }
+
+
+        public void StartNewGame()
+        {
+            string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
+
+            if (File.Exists(saveFilePath))
+            {
+                // Delete the save file if it exists
+                File.Delete(saveFilePath);
+                Debug.Log("Deleted save file.");
+            }
+            else
+            {
+                Debug.Log("No save file found to delete.");
+            }
+            TransitionToNextScene();
         }
         private void TransitionToNextScene()
         {
             // Load the next scene by its build index
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            
+
         }
     }
 }
