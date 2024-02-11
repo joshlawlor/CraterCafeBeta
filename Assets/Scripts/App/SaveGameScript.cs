@@ -113,13 +113,13 @@ namespace DPUtils.Systems.SaveSystem
 
             if (loadedData != null)
             {
-                TransitionToNextScene();
                 // Use the loaded data
                 timeManager.SetDateTime(loadedData.CurrentDateTimeInfo);
                 bankScoreController.SetBankScore(loadedData.PlayerBankScore);
                 statsTracker.SetTotalSpawnedNPCs(loadedData.TotalCustomers);
 
                 Debug.Log($"Game loaded!\n{loadedData}");
+                TransitionToNextScene();
 
             }
         }
