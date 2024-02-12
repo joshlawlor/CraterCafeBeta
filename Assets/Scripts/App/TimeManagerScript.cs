@@ -1,7 +1,6 @@
 using System;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using DPUtils.Systems.SaveSystem;
@@ -48,7 +47,7 @@ namespace DPUtils.Systems.DateTime
         private void Awake()
         {
             string saveFilePath = Application.persistentDataPath + "/savedGameFile.dat";
-
+            
             if (File.Exists(saveFilePath))
             {
                 SaveData loadedData = SaveData.LoadFromFile(saveFilePath);

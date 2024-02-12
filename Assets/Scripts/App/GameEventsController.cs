@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class GameEventsController : MonoBehaviour
 {
     public RandomNPCSpawner randomNPCSpawning;
     public SaveGameScript saveGameScript;
+    private InGameMenuScript inGameMenuScript;
 
     public TextMeshProUGUI BarStatus; // Reference to the TMP object
     private bool isSpawningActive = false;
@@ -28,6 +28,7 @@ public class GameEventsController : MonoBehaviour
         }
         // Find the TimeManagerScript in the scene
         timeManager = FindObjectOfType<TimeManagerScript>();
+        inGameMenuScript = FindObjectOfType<InGameMenuScript>();
 
         if (timeManager == null)
         {
@@ -122,7 +123,10 @@ public class GameEventsController : MonoBehaviour
 
     public void ExitToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+
+        inGameMenuScript.OnButtonClick(); // NEED TO UNPAUSE GAME BEFORE TRANSITION (OTHERWISE ALL SCENES LOAD IN PAUSE MODE)
+        SceneManager.LoadSceneAsync("Main Menu");
+
 
     }
 
