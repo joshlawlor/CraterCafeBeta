@@ -123,8 +123,10 @@ public class GameEventsController : MonoBehaviour
 
     public void ExitToMenu()
     {
+
         inGameMenuScript.OnButtonClick(); // NEED TO UNPAUSE GAME BEFORE TRANSITION (OTHERWISE ALL SCENES LOAD IN PAUSE MODE)
         SceneManager.LoadSceneAsync("Main Menu");
+
 
     }
 
