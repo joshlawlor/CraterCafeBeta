@@ -11,6 +11,8 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> inventory = new List<InventoryItem>();
     private Dictionary<ItemData, InventoryItem> itemDictionary = new Dictionary<ItemData, InventoryItem>();
 
+    private int nextItemID = 1; // Tracks the next available item ID
+
 
     // Public property to get the singleton instance
     public static Inventory Instance
@@ -68,14 +70,14 @@ public class Inventory : MonoBehaviour
         if (itemDictionary.TryGetValue(itemData, out InventoryItem item))
         {
             // item.AddToStack();
-            InventoryItem newItem = new InventoryItem(itemData);
+            InventoryItem newItem = new InventoryItem(itemData, nextItemID++);
             inventory.Add(newItem);
             Debug.Log($"Added {itemData.itemName} to the inventory. Stack size: {item.stackSize}");
             OnInventoryChange?.Invoke(inventory);
         }
         else
         {
-            InventoryItem newItem = new InventoryItem(itemData);
+            InventoryItem newItem = new InventoryItem(itemData, nextItemID++);
             inventory.Add(newItem);
             itemDictionary.Add(itemData, newItem);
             Debug.Log($"Added {itemData.itemName} to the inventory for the first time!");
