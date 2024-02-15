@@ -10,11 +10,13 @@ public class InventoryItem
 
     public ItemData itemData;
     public int stackSize;
+    public int itemID;
 
-    public InventoryItem(ItemData item)
+    public InventoryItem(ItemData item, int itemID)
     {
 
         itemData = item;
+        this.itemID = itemID;
         AddToStack();
     }
 
