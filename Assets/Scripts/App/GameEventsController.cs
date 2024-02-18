@@ -83,8 +83,12 @@ public class GameEventsController : MonoBehaviour
     // Start spawning NPCs
     void StartSpawning()
     {
-        randomNPCSpawning.StartSpawning();
-        isSpawningActive = true;
+        if (randomNPCSpawning)
+        {
+            randomNPCSpawning.StartSpawning();
+            isSpawningActive = true;
+        }
+
     }
 
     // Stop spawning NPCs

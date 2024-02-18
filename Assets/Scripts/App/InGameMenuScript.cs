@@ -8,6 +8,8 @@ public class InGameMenuScript : MonoBehaviour
     public void OnButtonClick()
     {
         ToggleGameMenu();
+                    Debug.Log("Pause button clicked");
+
     }
 
     public void ToggleGameMenu()
@@ -21,6 +23,9 @@ public class InGameMenuScript : MonoBehaviour
 
             // Pause or unpause the game based on the menu state
             SetGamePaused(newMenuState);
+        }
+        else{
+            Debug.Log("GameMenu is not active");
         }
     }
 
